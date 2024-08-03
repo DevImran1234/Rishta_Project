@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #FEF4F5;
+}
+
+.footer {
+    padding: 20px 0;
+    color: #333;
+}
+
+.footer .footer-containers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;  
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.footer .column {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 10px;
+}
+
+.footer h2, .footer h3 {
+    color: #C3669F;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer ul {
+    padding: 0;
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.footer li {
+    margin-bottom: 8px;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer .social {
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    background-color: #5194AE;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer .social h1 {
+    font-size: 24px; /* Adjust font size if needed */
+    color: white;
+    margin: 0; /* Remove any default margin */
+}
+
+.footer .social a {
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove any default margin */
+}
+
+.footer .copyright {
+    background-color: #5194AE;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Align content in a column */
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .copyright img {
+    width: 70px;
+    height: 70px;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer .column {
+        margin-bottom: 20px;
+    }
+
+    .footer .social {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+}

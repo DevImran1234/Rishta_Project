@@ -1,0 +1,120 @@
+/* Importing Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Applying global styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for the entire body */
+  margin: 0;
+  padding: 0;
+  background-color: #f8e6e0;
+}
+
+/* Button styles */
+.card_button {
+  background-color: #2f82a0;
+  border: none;
+  outline: none;
+  width: 305px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for the button */
+  font-weight: 600;
+  color: white;
+  margin-top: 60px; /* Changed from margin-block to margin-top for better compatibility */
+  padding: 10px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.card_button:hover {
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Card wrapper styles */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  overflow: hidden; /* Ensuring the wrapper hides overflow properly */
+}
+
+/* Card background styles */
+.card-background {
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 21%;
+  right: 21%;
+  background-color: rgba(47, 130, 160, 0.5); /* Light blue background */
+  border-radius: 20px;
+  z-index: 1;
+  transition: opacity 1s; /* Smooth fade effect */
+}
+
+/* Card container styles */
+.cards_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto; /* Centering the container */
+  padding: 20px;
+}
+
+/* Card styles */
+.card {
+  background-color: white;
+  padding: 20px;
+  max-width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #de0e7e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Ensuring the card hides overflow properly */
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.card:hover {
+  transform: scale(1.03); /* Slight scale effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect on hover */
+}
+
+/* Card paragraph styles */
+.card p {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for paragraphs */
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Image styles */
+.img {
+  width: 80px; /* Adjusted width for images */
+  height: 80px; /* Adjusted height for images */
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cards_container {
+    padding: 10px; /* Adjusted padding for responsiveness */
+  }
+  
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Adjusted card size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* Full width for smaller screens */
+  }
+}

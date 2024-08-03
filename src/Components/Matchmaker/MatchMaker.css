@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Romanesco&display=swap");
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+ .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 400;
+    font-family: "Romanesco", cursive;
+    font-style: normal;
+    color: #2F82A0;
+    font-size: 3.5rem; 
+    margin-top: 3rem;
+    text-align: center;
+}
+.title1 {
+    font-size: 2rem;
+    color: #2F82A0;
+    font-family: "Romanesco";
+    text-align: center ;
+    margin-top: 1rem;
+}
+
+.match-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+.match-container .heading{
+    text-align: center;
+}
+.content-left, .content-right {
+    flex: 1;
+    max-width: 40rem;
+    margin: 0 1rem;
+}
+
+.content-right {
+    margin-top: 1rem;
+    height: 40%; 
+    margin-left: 20%;
+}
+.content-right img{
+    height: 100vh;
+}
+.content-left{
+    width: 100%;
+}
+
+.engage {
+    border: 0.625rem solid #97BBCB;
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.engage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.engage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.text {
+    width: 100%;
+    margin-top: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.25rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.buttons, .joinbuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.read, .join {
+    width: 10rem;
+    height: 3rem;
+    background-color: #2F82A0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: white;
+    border-radius: 0.625rem;
+    transition: background-color 0.3s ease;
+}
+
+.join {
+    background-color: #DE0E7E;
+}
+
+.read:hover {
+    background-color: #195e77;
+}
+
+.join:hover {
+    background-color: #911456;
+}
+
+@media (max-width: 768px) {
+    .match-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-left, .content-right {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .engage {
+        margin-top: 1rem;
+    }
+
+    .text {
+        margin-top: 1rem;
+    }
+
+    .buttons, .joinbuttons {
+        margin-top: 1rem;
+    }
+
+    .read, .join {
+        width: 100%;
+    }
+}

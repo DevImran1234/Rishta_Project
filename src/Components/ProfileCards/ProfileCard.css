@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Romanesco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for the entire body */
+  margin: 0;
+  padding: 0;
+  background-color: #f8e6e0;
+}
+
+.card_button {
+
+  border: none;
+  outline: none;
+  width: 305px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for the button */
+  font-weight: 600;
+  color: white;
+  margin-top: 60px; /* Changed from margin-block to margin-top for better compatibility */
+  padding: 10px 30px;
+  text-align: center;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  overflow: hidden; /* Ensuring the wrapper hides overflow properly */
+}
+
+.card-background {
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 21%;
+  right: 21%;
+  background-color: rgba(47, 130, 160, 0.5); /* Light blue background */
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.cards_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto; /* Centering the container */
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  max-width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #de0e7e;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  overflow: hidden; /* Ensuring the card hides overflow properly */
+  position: relative;
+  z-index: 2;
+
+}
+
+.card p {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for paragraphs */
+  text-align: center;
+  margin-top: 20px;
+}
+
+.img {
+  width: 80px; /* Adjusted width for images */
+  height: 80px; /* Adjusted height for images */
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .cards_container {
+    padding: 10px; /* Adjusted padding for responsiveness */
+  }
+  
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Adjusted card size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* Full width for smaller screens */
+  }
+}
