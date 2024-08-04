@@ -4,7 +4,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import MarriageForm from './Components/MarriageForm/MarriageForm';
-import Users from './Components/Users';
+import Users from './Components/Users/Users'
 const App = () => {
   return (
     <Router>
