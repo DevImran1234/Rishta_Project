@@ -112,6 +112,7 @@ import logo from '../../images/logo-blk.png';
 import '../Login/Login.css';
 import couple from '../../images/couple.png';
 import { useNavigate } from 'react-router-dom';
+import { Facebook, Twitter } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -162,9 +163,33 @@ const Login = () => {
           <br />
           <button className='nxt' id='next'>Next</button>
         </div>
-        <div className="first-image">
+        <div className="firsts-image">
           <img src={couple} alt="marriage" />
         </div>
+      </div>
+      <div className="rights-side">
+         <div className="login">
+               <h1 className="login_heading">Login</h1>
+               <div className="login_form">
+                  <div className="input_field">
+                     <i className="fas fa-user"></i>
+                     <input type="text" placeholder="Username"  className='Name'/>
+                  </div>
+                  <div className="input_field">
+                     <i className="fas fa-lock"></i>
+                     <input type="password" placeholder="Password"  className='Name'/>
+                  </div>
+                  <input type="submit" value="Login" className="btn solid" />
+                  <p className="social-text">Or Signin with</p>
+                  <div className="social-media">
+                    {/* <Facebook/> */}
+                    <span className="logos--facebook"></span>
+                     {/* <Twitter/> */}
+                     <span className="devicon--google"></span>
+                     <span className="logos--twitter"></span>
+                    </div>
+               </div>
+         </div>
       </div>
     </div>
   );
