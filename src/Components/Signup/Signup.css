@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -170,8 +170,8 @@ form.sign-in-form {
   width: 2000px;
   top: -10%;
   right: 48%;
-  transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #de0e7e 0%, #de0e7e 100%);
+  transform: translateY(-40%);
+  background-image: linear-gradient(-45deg, #D9D9D9 0%, #BFBFBF 51%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -234,7 +234,7 @@ form.sign-in-form {
   transform: translateX(800px);
 }
 
-/* ANIMATION */
+
 
 .container.sign-up-mode:before {
   transform: translate(100%, -50%);
@@ -400,4 +400,251 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+} */
+ 
+
+
+
+
+
+
+
+.Signupcontainer_1 {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.lefts_side {
+  width: 40%;
+  height: auto;
+  position: relative;
+}
+
+/* .right-side {
+  width: 60%;
+  height: auto;
+} */
+
+.circle_zaheers{
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50%;
+  left: -57%;   
+  background-color: #E4E8E9;
+  z-index: 4;
+}
+
+.image_style {
+  width: auto;
+  height: 100px;
+  padding: 20px 0px 0px 30px;
+  position: absolute;
+  left: 0px;
+  z-index: 5;
+}
+
+.first-image{
+  width: 300px;
+  height: 490px;
+  position: absolute;
+  z-index: 111;
+  top: 250px;
+  left: 40px;
+}
+.marriage_consultant{
+  margin-top: 7%;
+  width: 50vw;
+  z-index: 1111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+/* .marriage_heading{
+  margin-block: 30px;
+  color: deeppink;
+  text-align: center;
+  font-size: 30px;
+} */
+/* .contact_form{
+  display: grid;
+  grid-template-columns: 300px 300px;
+  gap: 20px;
+} */
+
+/* .input_box{
+  display: flex;  
+  align-items: center;
+  background-color: white;
+  gap: 8px;
+  border-radius: 15px;
+  padding-right: 10px;
+} */
+
+/* .Name{
+  background-color: transparent;
+  width: 100% !important;
+  border: none;
+  outline: none;
+}
+.user{
+  height: 20px;
+  width: 20px;
+}
+.icon{
+  background-color: #2F82A0;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: white;
+}
+.btn{
+  margin-top: 10px;
+}
+.my-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+.a_signin{
+  color: deeppink;
+} */
+
+@media screen and (min-width:1200px) {
+  .Signupcontainer_1 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .left-side {
+    width: 40%;
+    height: auto;
+    position: relative;
+  }
+  
+  /* .right-side {
+    width: 60%;
+    height: auto;
+  } */
+  
+}
+@media screen and (max-width:1108px) {
+  .Signupcontainer_1{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    margin: auto !important;
+  }
+  
+  .left-side {
+    width: 50%;
+    height: auto;
+    position: relative;
+  }
+  
+  /* .right-side {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    margin-top: 0px;
+  } */
+ 
+  /* .contact_form{
+    display: block;
+    width: 80%;
+    gap: 20px;
+  }
+  
+  .input_box{
+    display: flex;  
+    align-items: center;
+    background-color: white;
+    gap: 8px;
+    border-radius: 15px;
+    padding-right: 10px;
+    margin-bottom: 12px;
+  } */
+ 
+
+
+}
+@media (max-width: 857px) {
+  .Signupcontainer_1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-side, .right-side {
+    width: 100%;
+
+  }
+  .right-side{
+    margin-top: 500px;
+  }
+
+  .circle_zaheers {
+    width: 200%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .first-image {
+    position: relative;
+    margin: 10px auto;
+    display: block;
+  }
+.image_style{
+  position: absolute;
+  left: 25%;
+}
+  .first-image {
+    position: absolute;
+    top: calc(120% - 130px);
+    left: calc(45% - 70px); 
+    width: 140px;
+    height: 170px;
+    z-index: 8;
+  }
+  /* .second_image {
+    position: absolute;
+    top: calc(124% - 10px);
+    left: calc(75% - 70px);
+  }
+
+  .first_angle {
+    top: 240px;
+    left: 60px;
+  }
+
+  .second_angle {
+    top: 150px;
+    left: 0;
+  }
+  .marriage_consultant {
+    width: 90vw;
+    margin-top: 5%;
+  }
+
+  .contact_form {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .input_box {
+    padding-right: 5px;
+  }
+
+  .marriage_heading {
+    font-size: 24px;
+  } */
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MarriageForm.css';
+import '../MarriageForm/MarriageForm.css';
 import logo from '../../images/logo-blk.png';
 import marriage from '../../images/marriage.png';
 import flowers from '../../images/flowers.png';
