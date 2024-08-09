@@ -48,7 +48,7 @@ const Signup = () => {
                 className="toggle-password"
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? <EyeOff /> : <Eye />}
+                {showPassword ? <EyeOff size={20}/> : <Eye size={20}/>}
               </button>
             </div>
             <div className="input_field">
@@ -62,7 +62,7 @@ const Signup = () => {
                 className="toggle-password"
                 onClick={toggleConfirmPasswordVisibility}
               >
-                {showConfirmPassword ? <EyeOff /> : <Eye />}
+                {showConfirmPassword ? <EyeOff  size={20}/> : <Eye size={20}/>}
               </button>
             </div>
             <input type="submit" value="Signup" className="btn solid" />
