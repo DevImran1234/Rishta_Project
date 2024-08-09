@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-
+    
   useEffect(() => {
     const nextButton = document.getElementById('next');
     const container = document.querySelector('.Logincontainer_1');
@@ -54,7 +54,7 @@ const Login = () => {
           <br />
           <button className='nxt' id='next'>Next</button>
         </div>
-        <div className="firsts-image">
+        <div className="firsts-image_login">
           <img src={couple} alt="marriage" />
         </div>
       </div>

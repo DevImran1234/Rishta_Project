@@ -79,13 +79,13 @@ label {
   z-index: 5;
 }
 
-.firsts-image {
+.firsts-image_login{
   width: 300px;
   height: 490px;
   position: absolute;
   z-index: 111;
-  top: 298px;
-  left: 2px;
+  top: 279px;
+  left: 24px;
 }
 .login_heading {
   margin-block: 30px;
@@ -229,7 +229,7 @@ label {
     flex-direction: row;
     margin: auto !important;
   }
-  .firsts-image{
+  .firsts-image_login{
     top: 35%;
   }
   .lefts-side {
