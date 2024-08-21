@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    padding: 10px 20px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo-client img {
+    max-width: 150px; 
+    height: auto; 
+}
+
+.nav-options {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    margin-left: 20px; 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: bold; 
+}
+
+.profile-button {
+    width: 40px;
+    margin-left: 20px;
+    height: 40px; 
+    border-radius: 50%; 
+    border: 1px solid #ccc; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer;
+    padding: 0; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.client-hero {
+    background: #fff; 
+    height: 100vh;
+    position: relative; 
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; 
+    align-items: center; 
+    width: 90%; 
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 40px 20px; 
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.client-hero-banner {
+    position: absolute;
+    top: 0px;
+    background-color: deeppink; 
+    width: 100%; 
+    height: 10vh; 
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px; /* Space between banner and items */
+}
+
+.client-hero .new, .client-hero .new-item {
+    border: 2px solid rgba(202, 196, 196, 0.7);
+    width: 25%;
+    height: 10vh;
+    padding: 10px;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background-color: #fff; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute space between children */
+    position: relative; /* For positioning the radio button */
+    margin-bottom: 10px; /* Space between .new and .new-item */
+}
+
+.client-hero .new .icon-container, .client-hero .new-item .icon-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.client-hero .new h1, .client-hero .new-item h1 {
+    font-size: 1.2rem; /* Adjusted font size */
+    margin: 0;
+}
+
+.client-hero .new p, .client-hero .new-item p {
+    margin: 0;
+}
+
+.client-hero .new input[type="radio"], .client-hero .new-item input[type="radio"] {
+    position: absolute;
+    right: 10px; /* Position the radio button on the right */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+
+.client-hero-content {
+    position: absolute;
+    top: 20px; 
+    display: flex;
+    right: 10%;
+    left: 30px;
+    gap: 90px; 
+    flex-wrap: wrap; 
+    width: calc(100% - 40px); 
+}
+
+.client-hero .button {
+    background-color: whitesmoke; 
+    color: deeppink;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.client-hero .button:hover {
+    background-color: rgb(189, 59, 128); 
+    transition: 0.5s ease;
+    color: #fff;
+}
+
+.add-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: deeppink;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+}
+
+.add-button:hover {
+    background-color: rgb(189, 59, 128); 
+    transition: 0.5s ease;
+    color: #fff;
+}
+
+.client-sidebar {
+    position: absolute; 
+    top: 70%; 
+    left: 20px;
+    cursor: pointer;
+    transform: translateY(-50%); 
+    width: 70px; 
+    height: 50vh; 
+    border-radius: 50px; 
+    background-color: rgb(108, 108, 145);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    z-index: 1000;
+}
+
+.footer {
+    background-color: #2F82A0;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.footer p {
+    margin-left: 20px;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.client-hero-banner h1 {
+    font-family: 'Poppins' , sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .client-hero-content {
+        gap: 15px; 
+    }
+    
+    .client-sidebar {
+        width: 50px; 
+        height: 40vh; 
+    }
+
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-options {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .client-hero-banner {
+        width: 350px;
+     }
+     .client-hero-banner h1 {
+        font-size: 1.5rem;
+        text-align: center;
+     }
+    
+    .client-hero {
+        padding: 20px; 
+    }
+
+    .client-hero-content {
+        flex-direction: column; 
+        gap: 10px; 
+        right: 0;   
+        left: 15px;
+        align-items: stretch; 
+    }
+
+    .add-button {
+        bottom: 10px; 
+        right: 10px; 
+    }
+
+    .client-sidebar {
+        top: 100%; 
+        bottom: 10px; 
+        width: 50px; 
+        height: 30vh; 
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .footer p {
+        margin-left: 0; 
+        margin-bottom: 10px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .client-sidebar {
+        width: 40px; 
+        height: 25vh; 
+    }
+
+    .client-hero {
+        padding: 10px; 
+    }
+   .client-hero .new{
+        width: 50%;
+    }
+   .client-hero .new-item{
+        width: 50%;
+    }
+    .client-hero-content {
+        gap: 5px; 
+    }
+
+    .add-button {
+        padding: 5px 10px; 
+        font-size: 0.9rem; 
+    }
+}

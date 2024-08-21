@@ -5,6 +5,8 @@ import Login from './Components/Login/Login';
 import Signup from './Components/Signup/Signup';
 import MarriageForm from './Components/MarriageForm/MarriageForm';
 import Users from './Components/Users/Users'
+import Client from './Components/Clients/Client';
+import ClientRequest from './Components/Clients/ClientRequest';
 const App = () => {
   return (
     <Router>
@@ -14,6 +16,8 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path='/marriage' element={<MarriageForm/>} />
         <Route path='/users' element={<Users/>} />
+        <Route path='/Clients' element={<Client/>} />
+        <Route path='/ClientsRequest' element={<ClientRequest/>} />
       </Routes>
     </Router>
   );
