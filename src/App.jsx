@@ -7,6 +7,7 @@ import MarriageForm from './Components/MarriageForm/MarriageForm';
 import Users from './Components/Users/Users'
 import Client from './Components/Clients/Client';
 import ClientRequest from './Components/Clients/ClientRequest';
+import ClientProfile from './Components/ClientProfile/ClientProfile';
 const App = () => {
   return (
     <Router>
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/users' element={<Users/>} />
         <Route path='/Clients' element={<Client/>} />
         <Route path='/ClientsRequest' element={<ClientRequest/>} />
+        <Route path='/ClientProfile' element={<ClientProfile/>} />
       </Routes>
     </Router>
   );

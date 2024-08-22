@@ -23,12 +23,69 @@ body {
     display: flex;
     align-items: center;
 }
+.client-hero-banner h1, .client-hero-banner h2 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+}
 
+.client-hero-banner h1 {
+    font-size: 2rem;
+    margin-bottom: 10px; /* Add margin to separate h1 from h2 */
+}
+
+.client-hero-banner h2 {
+    position: absolute;
+    top: 50px;
+    font-size: 1.5rem;
+}
 .nav-link {
     margin-left: 20px; 
     text-decoration: none; 
     color: #333; 
     font-weight: bold; 
+}
+.image {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-row-gap: 20px; 
+    grid-column-gap: 60px; 
+    margin-top: 20vh; /* Adjust margin-top if necessary */
+}
+
+.form-image {
+    grid-column: span 2; 
+    justify-self: center; /* Center the image */
+}
+
+
+.form .form-image {
+    width: 20vh;  
+    height: 20vh;
+    border: 10px solid lightgray; 
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 90px;
+    left: 45%;
+}
+.icons-container{
+    position: absolute;
+    top: 28%;
+    background-color: deeppink;
+    left: 53%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.form-input {
+    outline: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 120%;
+    box-sizing: border-box;
 }
 
 .profile-button {
@@ -67,7 +124,7 @@ body {
     top: 0px;
     background-color: deeppink; 
     width: 100%; 
-    height: 10vh; 
+    height: 13vh; 
     border-radius: 10px; 
     display: flex; 
     justify-content: center; 
@@ -169,13 +226,13 @@ body {
 .client-sidebar {
     position: absolute; 
     top: 70%; 
-    left: 20px;
+    left: 30px;
     cursor: pointer;
     transform: translateY(-50%); 
     width: 70px; 
     height: 50vh; 
     border-radius: 50px; 
-    background-color: rgb(108, 108, 145);
+    background: linear-gradient(181.15deg, rgba(62, 138, 165, 0.8) 0.61%, rgba(24, 53, 63, 0.6) 143.1%);
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -185,7 +242,7 @@ body {
     z-index: 1000;
 }
 
-.footer {
+.footer_client {
     background-color: #2F82A0;
     color: #fff;
     display: flex;
@@ -194,7 +251,7 @@ body {
     padding: 10px 20px;
 }
 
-.footer p {
+.footer_client p {
     margin-left: 20px;
     margin-bottom: 0;
     white-space: nowrap;

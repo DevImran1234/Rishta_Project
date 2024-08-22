@@ -42,7 +42,7 @@ const Client = () => {
          <br />
          <LogOutIcon color='white'/>
       </div>
-      <footer className='footer'>
+      <footer className='footer_client'>
           <p>Privacy and Policy</p>
           <p>Terms and conditions</p>
       </footer>
