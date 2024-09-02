@@ -1,0 +1,57 @@
+/* Container for the navbar */
+.navbar-div {
+    background:linear-gradient(90deg, rgba(47, 130, 160, 0.4) 0%, rgba(228, 43, 136, 0.4) 100%);
+    padding: 10px 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Adjust to fit your design */
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #fff; /* Text color for links and other elements */
+  }
+  
+  /* Logo styles */
+  .logo img {
+    height: 40px; /* Adjust logo size as needed */
+  }
+  
+  /* Nav options container */
+  .nav-options {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Nav link styles */
+  .nav-link {
+    color: black; /* Link color */
+    text-decoration: none;
+    margin: 0 15px; /* Spacing between nav items */
+    font-size: 16px; /* Adjust font size as needed */
+  }
+  
+  .nav-link:hover {
+    color: #ddd; /* Hover color for links */
+  }
+  
+  /* Profile button styles */
+  .profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Adjust the size of the profile image */
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .profile-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

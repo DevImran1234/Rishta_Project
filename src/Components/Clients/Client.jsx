@@ -1,53 +1,51 @@
 import React from 'react';
-import logo from '../../images/logo-blk.png';
-import './Client.css';
-import { Bell, Home, LogOutIcon, LogsIcon, MessageCircle, Settings, Settings2, SettingsIcon, UserRoundPlus } from 'lucide-react';
-import user from '../../images/img1.jpg'
+import ClientNavbar from '../ClientNavbar/ClientNavbar';
+import Sidebar from '../Sidebar/Sidebar';
+import { Plus } from 'lucide-react';
+import ClientFooter from '../ClientFooter/ClientFooter'; // Ensure correct import path
 
 const Client = () => {
   return (
     <div>
-      <nav className="navbar">
-        <div className="logo-client">
-          <img src={logo} alt="Logo" />
+      <ClientNavbar />
+      <Sidebar />
+      <div className="bg-white h-[90vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
+        {/* Buttons container */}
+        <div className="flex flex-wrap justify-center items-center w-full space-y-4 md:space-y-0 md:space-x-4 mt-4">
+          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
+            My Clients
+          </button>
+          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
+            Other Clients
+          </button>
+          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
+            Send Request
+          </button>
+          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
+            Received Request
+          </button>
+          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
+            Accept Request
+          </button>
         </div>
-        <div className="nav-options">
-          <a href="/home" className="nav-link">Home</a>
-          <Bell className='nav-link' />
-          <div className="profile-button">
-            <img src={user} alt="Profile" style={{ borderRadius: '50%', width: '100%', height: '100%' }} />
-          </div>
-          <a href="/profile" className="nav-link">Profile</a>
+
+        {/* Content container */}
+        <div className="mt-60">
+          {/* Content goes here */}
+          <p>It seems like no user found right now. When we
+          find it will appear here</p>
         </div>
-      </nav>
-      <div className="client-hero">
-        <div className="client-hero-content">
-          <button className='button'>My Clients</button>
-          <button  className='button'>Other Clients</button>
-          <button className='button'>Send Requests</button>
-          <button className='button'>Recieved Requests</button>
-          <button className='button'>Accept Request</button>
-        </div>
-        <p className='text'>
-            it seems Like no user found right now. When we find it will appear here
-        </p>
-        <button className='add-button'><UserRoundPlus/> Add client</button>
+
+        {/* Add Client button */}
+        <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
+            <Plus className="w-5 h-5 mr-2" />
+            Add Client
+          </button>
+
       </div>
-      <div className="client-sidebar">
-        <Home color='white'/>
-        <br />
-         <MessageCircle color='white'/>
-         <br />
-         <SettingsIcon color='white'/>
-         <br />
-         <LogOutIcon color='white'/>
-      </div>
-      <footer className='footer_client'>
-          <p>Privacy and Policy</p>
-          <p>Terms and conditions</p>
-      </footer>
+      <ClientFooter /> {/* Ensure this is placed correctly */}
     </div>
   );
-}
+};
 
 export default Client;
