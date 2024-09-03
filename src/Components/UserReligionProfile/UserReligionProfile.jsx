@@ -1,11 +1,11 @@
 import React from 'react';
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
-import { Camera } from 'lucide-react';
+import { Camera, Plus } from 'lucide-react';
 import image from '../../images/img1.jpg';
 import ClientFooter from '../ClientFooter/ClientFooter';
 
-const Religious = () => {
+const UserReligious = () => {
   return (
     <div>
       <ClientNavbar />
@@ -13,7 +13,7 @@ const Religious = () => {
       <div className="bg-white flex-grow min-h-[125vh] mt-10 relative flex flex-col items-center w-full max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md overflow-x-hidden">
         <div className="absolute top-0 left-0 right-0 bg-pink-700 h-[10vh] flex flex-col items-center justify-center p-4">
           <h1 className='text-3xl font-medium text-white'>
-            Create Your Client Profile
+             User Create Profile
           </h1>
           <p className='text-lg text-white mt-2'>
             (Religious)
@@ -154,4 +154,4 @@ const Religious = () => {
   );
 }
 
-export default Religious;
+export default UserReligious;

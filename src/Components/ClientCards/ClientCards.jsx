@@ -11,7 +11,7 @@ const ClinetCards = () => {
         <div className="flex items-center">
           <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0"></div>
           <div className="ml-4">
-            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Harisa Khursheed</h2>
+            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Nayla Riaz</h2>
           </div>
         </div>
         <div className="flex justify-between">
@@ -24,14 +24,15 @@ const ClinetCards = () => {
             <p className="text-[22px] text-[#797979] max-[767px]:text-[14px]"><b>Education:</b> Bachelors</p>
           </div>
         </div>
-        <div className="mx-auto flex justify-between pt-[20px]">
-          <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={star} alt="Star Icon" /> Favourite
-          </button>
-          <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={chaticon} alt="Chat Icon" /> Chat Now
-          </button>
-        </div>
+            <div className="mx-auto flex justify-between pt-[20px]">
+            <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+              <img src={star} alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
+            </button>
+            <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+              <img src={chaticon} alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat Now
+            </button>
+          </div>
+
       </div>
 
       {/* Card 2 */}
@@ -39,7 +40,7 @@ const ClinetCards = () => {
         <div className="flex items-center">
           <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0"></div>
           <div className="ml-4">
-            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Harisa Khursheed</h2>
+            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Faiza</h2>
           </div>
         </div>
         <div className="flex justify-between">
@@ -53,13 +54,15 @@ const ClinetCards = () => {
           </div>
         </div>
         <div className="mx-auto flex justify-between pt-[20px]">
-          <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={star} alt="Star Icon" /> Favourite
-          </button>
-          <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={chaticon}alt="Chat Icon" /> Chat Now
-          </button>
-        </div>
+        <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={star} alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
+        </button>
+        <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={chaticon} alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat Now
+        </button>
+      </div>
+
+
       </div>
 
       {/* Card 3 */}
@@ -67,7 +70,7 @@ const ClinetCards = () => {
         <div className="flex items-center">
           <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0"></div>
           <div className="ml-4">
-            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Harisa Khursheed</h2>
+            <h2 className="text-[28px] font-semibold text-[#2F82A0] max-[767px]:text-[18px]">Kanwal</h2>
           </div>
         </div>
         <div className="flex justify-between">
@@ -81,13 +84,14 @@ const ClinetCards = () => {
           </div>
         </div>
         <div className="mx-auto flex justify-between pt-[20px]">
-          <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={star} alt="Star Icon" /> Favourite
-          </button>
-          <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={chaticon} alt="Chat Icon" /> Chat Now
-          </button>
-        </div>
+        <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={star} alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
+        </button>
+        <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={chaticon} alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat Now
+        </button>
+      </div>
+
       </div>
 
       {/* Card 4 */}
@@ -109,13 +113,14 @@ const ClinetCards = () => {
           </div>
         </div>
         <div className="mx-auto flex justify-between pt-[20px]">
-          <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={star} alt="Star Icon" /> Favourite
-          </button>
-          <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-[10px] px-[20px] rounded-[18px] text-[15px]">
-            <img src={chaticon} alt="Chat Icon" /> Chat Now
-          </button>
-        </div>
+        <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={star} alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
+        </button>
+        <button className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
+          <img src={chaticon} alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat Now
+        </button>
+      </div>
+
       </div>
     </div>
   );

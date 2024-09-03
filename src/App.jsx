@@ -19,6 +19,20 @@ import Clientprofession from './Components/ClientProfession/Clientprofession';
 import Family from './Components/Family/Family';
 import Partner from './Components/Partner/partner';
 import Against from './Components/ClientAgainstRequest/Against';
+import UsersSide from './Components/UsersSide/UsersSide';
+import Caste from './Components/caste/caste';
+import UserReligion from './Components/UserReligion/UserReiligion';
+import Section from './Components/Section/Section';
+import UserHeight from './Components/Height/Height';
+import UserResidence from './Components/UserResidence/UserResidence';
+import UserFavourites from './Components/UserFavourites/UserFavourites';
+import UserCreateProfile from './Components/UserCreateProfile/UserCreateProfile';
+import UserReligious from './Components/UserReligionProfile/UserReligionProfile';
+import UserProfessional from './Components/UserProfessional/UserProfessional';
+import UserFamily from './Components/UserFamily/UserFamily';
+import Userpartner from './Components/UserPartnerDetails/UserPartner';
+import UserProfile from './Components/UserProfile/UserProfile';
+import Settings from './Components/Settings/Settings';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -56,6 +70,20 @@ const App = () => {
         <Route path="/Family" element={<Family />} />
         <Route path="/partner-details" element={<Partner />} />
         <Route path="/AgainstRequest" element={<Against />} />
+        <Route path="/users-side" element={<UsersSide/>} />
+        <Route path="/cast" element={<Caste/>} />
+        <Route path="/user-religion" element={<UserReligion/>} />
+        <Route path="/Section" element={<Section/>} />
+        <Route path="/user-height" element={<UserHeight/>} />
+        <Route path="/user-residence" element={<UserResidence/>} />
+        <Route path="/user-favourite" element={<UserFavourites/>} />
+        <Route path="/UserCreate-profile" element={<UserCreateProfile/>} />
+        <Route path="/UserCreate-Religion" element={<UserReligious/>} />
+        <Route path="/UserProfession" element={<UserProfessional/>} />
+        <Route path="/UserFamily" element={<UserFamily/>} />
+        <Route path="/UserPartner" element={<Userpartner/>} />
+        <Route path="/UserProfile" element={<UserProfile/>} />
+        <Route path="/Settings" element={<Settings/>} />
       </Routes>
     </Router>
   );
