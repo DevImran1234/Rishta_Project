@@ -68,7 +68,7 @@ const Settings = () => {
           <Link to="/DeleteAccount"  className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-20 left-50 transition-colors duration-300 z-50">
             Delete Account
           </Link>
-          <Link to="/Logout" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-30 transition-colors duration-300 z-50">
+          <Link to="/" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-30 transition-colors duration-300 z-50">
              Logout
            </Link>
         </div>

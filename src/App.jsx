@@ -35,7 +35,6 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import Settings from './Components/Settings/Settings';
 import Payment from './Components/Payment/Payment';
 import Delete from './Components/Delete/Delete';
-import Logout from './Components/Logout/Logout';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -88,7 +87,7 @@ const App = () => {
         <Route path="/Settings" element={<Settings/>} />
         <Route path="/payment" element={<Payment/>} />
         <Route path="/DeleteAccount" element={<Delete/>} />
-        <Route path="/Logout" element={<Logout/>} />
+        <Route path="/" element={<Home/>} />
       </Routes>
     </Router>
   );
