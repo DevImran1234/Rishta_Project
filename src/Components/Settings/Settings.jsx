@@ -3,6 +3,7 @@ import { Star, FileText, Info, Share, ChevronRight } from 'lucide-react'; // Imp
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import UseSidebar from '../UsersSidebar/UsersSidebar';
 import ClientFooter from '../ClientFooter/ClientFooter';
+import { Link } from 'react-router-dom';
 
 const Settings = () => {
   return (
@@ -64,6 +65,12 @@ const Settings = () => {
             </div>
             <ChevronRight className="w-6 h-6 text-[#2F82A0B2]" />
           </a>
+          <Link to="/DeleteAccount"  className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-20 left-50 transition-colors duration-300 z-50">
+            Delete Account
+          </Link>
+          <Link to="/Logout" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-30 transition-colors duration-300 z-50">
+             Logout
+           </Link>
         </div>
       </div>
       <ClientFooter/>

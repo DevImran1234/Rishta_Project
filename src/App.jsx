@@ -33,7 +33,9 @@ import UserFamily from './Components/UserFamily/UserFamily';
 import Userpartner from './Components/UserPartnerDetails/UserPartner';
 import UserProfile from './Components/UserProfile/UserProfile';
 import Settings from './Components/Settings/Settings';
-
+import Payment from './Components/Payment/Payment';
+import Delete from './Components/Delete/Delete';
+import Logout from './Components/Logout/Logout';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -84,6 +86,9 @@ const App = () => {
         <Route path="/UserPartner" element={<Userpartner/>} />
         <Route path="/UserProfile" element={<UserProfile/>} />
         <Route path="/Settings" element={<Settings/>} />
+        <Route path="/payment" element={<Payment/>} />
+        <Route path="/DeleteAccount" element={<Delete/>} />
+        <Route path="/Logout" element={<Logout/>} />
       </Routes>
     </Router>
   );

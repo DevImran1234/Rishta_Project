@@ -221,6 +221,31 @@ label {
 .btn:hover {
   background-color: #be2d71;
 }
+.otp_section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.otp_inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.otp_input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.otp_input:focus {
+  border-color: #4A90E2;
+}
+
 @media screen  and (max-width: 1108px) {
   .Logincontainer_1{
     width: 100%;

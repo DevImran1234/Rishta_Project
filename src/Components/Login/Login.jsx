@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import logo from '../../images/logo-blk.png';
 import './Login.css';
@@ -70,6 +69,18 @@ const Login = () => {
                      <i className="fas fa-lock"></i>
                      <input type="password" placeholder="Password"  className='Name'/>
                   </div>
+                  
+                  {/* OTP Section */}
+                  <div className="otp_section">
+                     <h2>Enter OTP</h2>
+                     <div className="otp_inputs">
+                        <input type="text" maxLength="1" className="otp_input" />
+                        <input type="text" maxLength="1" className="otp_input" />
+                        <input type="text" maxLength="1" className="otp_input" />
+                        <input type="text" maxLength="1" className="otp_input" />
+                     </div>
+                  </div>
+                  
                   <input type="submit" value="Login" className="btn solid" />
                   <p className="social-text">Or Signin with</p>
                   <div className="social-media">
