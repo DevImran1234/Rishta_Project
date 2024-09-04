@@ -1,9 +1,10 @@
 import React from 'react';
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import ClientFooter from '../ClientFooter/ClientFooter';
-import { Camera } from 'lucide-react'; // Import Camera icon from Lucide React
+import { Camera, Plus } from 'lucide-react'; // Import Camera icon from Lucide React
 import { Grid, TextField, Typography } from '@mui/material'; // Import MUI components
 import image from '../../images/img1.jpg';
+import { Link } from 'react-router-dom';
 const Profile = () => {
   return (
     <div>
@@ -66,6 +67,12 @@ const Profile = () => {
             </Grid>
           </div>
         </div>
+        <Link
+          to="/add-client"
+          className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300"
+        >
+            Save
+        </Link>
       </div>
       <ClientFooter />
     </div>

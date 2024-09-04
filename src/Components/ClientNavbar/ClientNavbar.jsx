@@ -13,7 +13,7 @@ const ClientNavbar = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="nav-options">
-          <a href="/home" className="nav-link">Home</a>
+          <Link to="/" className="nav-link">Home</Link>
           <Bell className="nav-link" />
           <div className="profile-button">
             <img src={image} alt="Profile" />

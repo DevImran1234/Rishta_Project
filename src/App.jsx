@@ -10,9 +10,9 @@ import ClientProfile from './Components/ClientProfile/ClientProfile';
 import OtherClients from './Components/OtherClients/OtherClients';
 import SendRequest from './Components/SendRequest/SendRequest';
 import Loader from './Components/Loader/Loader';
-import ReceivedRequest from './Components/ReceivedRequest/Request'; // Uncomment and import if needed
-import Profile from './Components/Profile/Profile'; // Uncomment and import if needed
-import Religious from './Components/ReligiousProfile/Religious'; // Uncomment and import if needed
+import ReceivedRequest from './Components/ReceivedRequest/Request'; 
+import Profile from './Components/Profile/Profile'; 
+import Religious from './Components/ReligiousProfile/Religious';
 import AcceptRequest from './Components/AcceptRequest/Accept';
 import Message from './Components/Messages/Message';
 import Clientprofession from './Components/ClientProfession/Clientprofession';
@@ -87,7 +87,7 @@ const App = () => {
         <Route path="/Settings" element={<Settings/>} />
         <Route path="/payment" element={<Payment/>} />
         <Route path="/DeleteAccount" element={<Delete/>} />
-        <Route path="/" element={<Home/>} />
+        {/* <Route path="/" element={<Home/>} /> */}
       </Routes>
     </Router>
   );

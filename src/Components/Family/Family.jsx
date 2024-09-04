@@ -1,9 +1,10 @@
 import React from 'react'
 import ClientNavbar from '../ClientNavbar/ClientNavbar'
 import Sidebar from '../Sidebar/Sidebar'
-import { Camera } from 'lucide-react';
+import { Camera, Plus } from 'lucide-react';
 import image from '../../images/img1.jpg';
 import ClientFooter from '../ClientFooter/ClientFooter';
+import { Link } from 'react-router-dom';
 
 const Family = () => {
   return (
@@ -119,6 +120,13 @@ const Family = () => {
             </div>
           </div>
         </div>
+        <Link
+          to="/add-client"
+          className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300"
+        >
+          <Plus className="w-5 h-5 mr-2" />
+          Add Client
+        </Link>
         </div>
       <ClientFooter/>
     </div>

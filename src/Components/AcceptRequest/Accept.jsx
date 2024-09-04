@@ -1,31 +1,11 @@
-
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Plus } from 'lucide-react';
 import ClientFooter from '../ClientFooter/ClientFooter'; 
 
 const AcceptRequest = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const currentPath = location.pathname;
-  const getActiveButton = () => {
-    if (currentPath.includes('/send-requests')) return 'send-requests';
-    if (currentPath.includes('/other-clients')) return 'other-clients';
-    if (currentPath.includes('/received-request')) return 'received-request';
-    if (currentPath.includes('/accept-request')) return 'accept-request';
-    return 'clients'; 
-  };
-
-  const [activeButton, setActiveButton] = useState(getActiveButton());
-
-  const handleButtonClick = (path) => {
-    navigate(path);
-    setActiveButton(path.split('/').pop());
-  };
-
   return (
     <div>
       <ClientNavbar />
@@ -33,36 +13,36 @@ const AcceptRequest = () => {
       <div className="bg-white h-[90vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
         {/* Buttons container */}
         <div className="flex flex-wrap justify-center items-center w-full space-y-4 md:space-y-0 md:space-x-4 mt-4">
-          <button
-            onClick={() => handleButtonClick('/clients')}
-            className={`bg-white ${activeButton === 'my-clients' ? 'bg-pink-700 text-white' : 'text-pink-500'} font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300`}
+          <Link 
+            to="/clients"
+            className="bg-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300 hover:bg-pink-700 hover:text-white"
           >
             My Clients
-          </button>
-          <button
-            onClick={() => handleButtonClick('/other-clients')}
-            className={`bg-white ${activeButton === 'other-clients' ? 'bg-pink-700 text-white' : 'text-pink-500'} font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300`}
+          </Link>
+          <Link 
+            to="/other-clients"
+            className="bg-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300 hover:bg-pink-700 hover:text-white"
           >
             Other Clients
-          </button>
-          <button
-            onClick={() => handleButtonClick('/send-requests')}
-            className={`bg-white ${activeButton === 'send-requests' ? 'bg-pink-700 text-white' : 'text-pink-500'} font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300`}
+          </Link>
+          <Link 
+            to="/send-requests"
+            className="bg-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300 hover:bg-pink-700 hover:text-white"
           >
             Send Request
-          </button>
-          <button
-            onClick={() => handleButtonClick('/received-request')}
-            className={`bg-white ${activeButton === 'received-request' ? 'bg-pink-700 text-white' : 'text-pink-500'} font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300`}
+          </Link>
+          <Link 
+            to="/received-request"
+            className="bg-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300 hover:bg-pink-700 hover:text-white"
           >
             Received Request
-          </button>
-          <button
-            onClick={() => handleButtonClick('/accept-request')}
-            className={`bg-white ${activeButton === 'accept-request' ? 'bg-pink-700 text-white' : 'text-pink-500'} font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300`}
+          </Link>
+          <Link 
+            to="/accept-request"
+            className="bg-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300 hover:bg-pink-700 hover:text-white"
           >
             Accept Request
-          </button>
+          </Link>
         </div>
 
         {/* Content container */}
@@ -71,10 +51,13 @@ const AcceptRequest = () => {
         </div>
 
         {/* Add Client button */}
-        <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
+        <Link 
+          to="/add-client"
+          className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300"
+        >
           <Plus className="w-5 h-5 mr-2" />
           Add Client
-        </button>
+        </Link>
       </div>
       <ClientFooter /> 
     </div>
