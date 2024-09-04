@@ -3,9 +3,37 @@ import logo from '../../images/logo-blk.png';
 import '../Users/users.css';
 import group from '../../images/Group.png';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+  password: yup
+    .string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters long'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .required('Confirm Password is required'),
+});
 
 const Users = () => {
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle form submission here
+  };
 
   return (
     <>
@@ -18,13 +46,17 @@ const Users = () => {
         <div className="right_side_container">
           <div className="user_form_container">
             <h1 className="user_heading_text">User</h1>
-            <div className="users_form">
+            <form className="users_form" onSubmit={handleSubmit(onSubmit)}>
               <div className="input_box_container">
                 <input
                   type="text"
                   placeholder="Enter your name"
                   className="input_field"
+                  {...register('name')}
                 />
+                {errors.name && (
+                  <p className="error_message">{errors.name.message}</p>
+                )}
               </div>
               <br />
               <div className="input_box_container">
@@ -32,7 +64,11 @@ const Users = () => {
                   type="password"
                   placeholder="Password"
                   className="input_field"
+                  {...register('password')}
                 />
+                {errors.password && (
+                  <p className="error_message">{errors.password.message}</p>
+                )}
               </div>
               <br />
               <div className="input_box_container">
@@ -40,29 +76,33 @@ const Users = () => {
                   type="password"
                   placeholder="Confirm Password"
                   className="input_field"
+                  {...register('confirmPassword')}
                 />
+                {errors.confirmPassword && (
+                  <p className="error_message">{errors.confirmPassword.message}</p>
+                )}
               </div>
               <div className="button_container">
-                <button type="button" className="signin_button">
+                <button type="submit" className="signin_button">
                   Signin
                 </button>
                 <p className="desc">
-                  Already a member?
+                  Already a member?{' '}
                   <a
                     href="#"
                     className="a_signin"
-                    onClick={() => navigate("/Signup")}
+                    onClick={() => navigate('/Signup')}
                   >
                     Signup
                   </a>
                 </p>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Users;

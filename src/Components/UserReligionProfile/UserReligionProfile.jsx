@@ -3,9 +3,31 @@ import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Camera, Plus } from 'lucide-react';
 import image from '../../images/img1.jpg';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'
 import ClientFooter from '../ClientFooter/ClientFooter';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  nationality: yup.string().required('Nationality is required'),
+  residence: yup.string().required('Residence details are required'),
+  ethnicity: yup.string().required('Ethnicity is required'),
+  province: yup.string().required('Province is required'),
+  religion: yup.string().required('Religion is required'),
+  caste: yup.string().required('Caste is required'),
+  city: yup.string().required('City is required'),
+  sect: yup.string().required('Sect is required'),
+});
 
 const UserReligious = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
       <ClientNavbar />
@@ -23,7 +45,7 @@ const UserReligious = () => {
           {/* Circular Container */}
           <div className="relative">
             <img
-              src={image} 
+              src={image}
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />
@@ -34,12 +56,16 @@ const UserReligious = () => {
           </div>
 
           {/* Form Section */}
-          <div className="mt-12 w-full max-w-2xl">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-12 w-full max-w-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Nationality */}
               <div className="col-span-1">
                 <label htmlFor="nationality" className="block text-sm font-medium text-gray-700">Nationality</label>
-                <select id="nationality" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="nationality"
+                  {...register('nationality')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Pakistani">Pakistani</option>
                   <option value="American">American</option>
@@ -47,24 +73,34 @@ const UserReligious = () => {
                   <option value="British">British</option>
                   <option value="Australian">Australian</option>
                 </select>
+                {errors.nationality && <p className="text-pink-600 text-sm mt-1">{errors.nationality.message}</p>}
               </div>
 
               {/* Residence Details */}
               <div className="col-span-1">
                 <label htmlFor="residence" className="block text-sm font-medium text-gray-700">Residence Details</label>
-                <select id="residence" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="residence"
+                  {...register('residence')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Urban">Urban</option>
                   <option value="Suburban">Suburban</option>
                   <option value="Rural">Rural</option>
                   <option value="International">International</option>
                 </select>
+                {errors.residence && <p className="text-pink-600 text-sm mt-1">{errors.residence.message}</p>}
               </div>
 
               {/* Ethnicity */}
               <div className="col-span-1">
                 <label htmlFor="ethnicity" className="block text-sm font-medium text-gray-700">Ethnicity</label>
-                <select id="ethnicity" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="ethnicity"
+                  {...register('ethnicity')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Asian">Asian</option>
                   <option value="Black">Black</option>
@@ -72,12 +108,17 @@ const UserReligious = () => {
                   <option value="White">White</option>
                   <option value="Mixed">Mixed</option>
                 </select>
+                {errors.ethnicity && <p className="text-pink-600 text-sm mt-1">{errors.ethnicity.message}</p>}
               </div>
 
               {/* Province */}
               <div className="col-span-1">
                 <label htmlFor="province" className="block text-sm font-medium text-gray-700">Province</label>
-                <select id="province" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="province"
+                  {...register('province')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Punjab">Punjab</option>
                   <option value="Sindh">Sindh</option>
@@ -86,12 +127,17 @@ const UserReligious = () => {
                   <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
                   <option value="Azad Kashmir">Azad Kashmir</option>
                 </select>
+                {errors.province && <p className="text-pink-600 text-sm mt-1">{errors.province.message}</p>}
               </div>
 
               {/* Religion */}
               <div className="col-span-1">
                 <label htmlFor="religion" className="block text-sm font-medium text-gray-700">Religion</label>
-                <select id="religion" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="religion"
+                  {...register('religion')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Islam">Islam</option>
                   <option value="Christianity">Christianity</option>
@@ -99,59 +145,75 @@ const UserReligious = () => {
                   <option value="Buddhism">Buddhism</option>
                   <option value="Judaism">Judaism</option>
                 </select>
+                {errors.religion && <p className="text-pink-600 text-sm mt-1">{errors.religion.message}</p>}
               </div>
 
               {/* Caste */}
               <div className="col-span-1">
                 <label htmlFor="caste" className="block text-sm font-medium text-gray-700">Caste</label>
-                <select id="caste" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="caste"
+                  {...register('caste')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Rajput">Rajput</option>
                   <option value="Jutt">Jutt</option>
-                  <option value="Butt">Butt</option>
+                  <option value="Arain">Arain</option>
                   <option value="Sheikh">Sheikh</option>
-                  <option value="Malik">Malik</option>
-                  <option value="Mughal">Mughal</option>
-                  <option value="Syed">Syed</option>
                   <option value="Pathan">Pathan</option>
                 </select>
+                {errors.caste && <p className="text-pink-600 text-sm mt-1">{errors.caste.message}</p>}
               </div>
 
               {/* City */}
               <div className="col-span-1">
                 <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
-                <select id="city" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="city"
+                  {...register('city')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
-                  <option value="Karachi">Karachi</option>
                   <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karachi</option>
                   <option value="Islamabad">Islamabad</option>
-                  <option value="Faisalabad">Faisalabad</option>
                   <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Peshawar">Peshawar</option>
                 </select>
+                {errors.city && <p className="text-pink-600 text-sm mt-1">{errors.city.message}</p>}
               </div>
 
               {/* Sect */}
               <div className="col-span-1">
                 <label htmlFor="sect" className="block text-sm font-medium text-gray-700">Sect</label>
-                <select id="sect" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500">
+                <select
+                  id="sect"
+                  {...register('sect')}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
+                >
                   <option value="">None</option>
                   <option value="Sunni">Sunni</option>
                   <option value="Shia">Shia</option>
-                  <option value="Ahmadiyya">Ahmadiyya</option>
+                  <option value="Wahabi">Wahabi</option>
                   <option value="Deobandi">Deobandi</option>
-                  <option value="Barelvi">Barelvi</option>
                 </select>
+                {errors.sect && <p className="text-pink-600 text-sm mt-1">{errors.sect.message}</p>}
               </div>
             </div>
-          </div>
-          <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
-             Next
-          </button>
+            
+            <button
+              type="submit"
+              className="mt-8 bg-[#E42B88] text-white py-2 px-6  rounded-lg shadow-md hover:bg-pink-700 "
+            >
+                Next
+            </button>
+          </form>
         </div>
       </div>
-            <ClientFooter/>
+      <ClientFooter />
     </div>
   );
-}
+};
 
 export default UserReligious;

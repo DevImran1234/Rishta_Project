@@ -1,16 +1,33 @@
 import React, { useState } from 'react';
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
-import { Camera } from 'lucide-react'; // Import Camera icon from Lucide React
-import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'; // Import MUI components
+import { Camera } from 'lucide-react';
+import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'; 
+import { useForm, Controller } from 'react-hook-form'; 
+import { yupResolver } from '@hookform/resolvers/yup'; 
+import * as yup from 'yup';
 import image from '../../images/img1.jpg';
 import ClientFooter from '../ClientFooter/ClientFooter';
 
-const UserCreateProfile = () => {
-  const [maritalStatus, setMaritalStatus] = useState('');
+const validationSchema = yup.object().shape({
+  firstName: yup.string().required('First name is required'),
+  lastName: yup.string().required('Last name is required'),
+  maritalStatus: yup.string().required('Marital status is required'),
+  dateOfBirth: yup.date().required('Date of birth is required'),
+  gender: yup.string().required('Gender is required'),
+  contactNumber: yup.string()
+    .required('Contact number is required')
+    .matches(/^[0-9]{10}$/, 'Contact number must be exactly 10 digits'),
+});
 
-  const handleMaritalStatusChange = (event) => {
-    setMaritalStatus(event.target.value);
+const UserCreateProfile = () => {
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle form submission
   };
 
   return (
@@ -30,7 +47,7 @@ const UserCreateProfile = () => {
           {/* Circular Container */}
           <div className="relative">
             <img
-              src={image} // Replace with your image path or URL
+              src={image}
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />
@@ -41,72 +58,132 @@ const UserCreateProfile = () => {
           </div>
 
           {/* Form Section */}
-          <div className="mt-12 w-full max-w-2xl">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-12 w-full max-w-2xl">
             <Grid container spacing={2}>
               {/* First Row */}
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="First Name"
-                  variant="outlined"
+                <Controller
+                  name="firstName"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      fullWidth
+                      label="First Name"
+                      variant="outlined"
+                      error={!!errors.firstName}
+                      helperText={errors.firstName?.message}
+                    />
+                  )}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Last Name"
-                  variant="outlined"
+                <Controller
+                  name="lastName"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      fullWidth
+                      label="Last Name"
+                      variant="outlined"
+                      error={!!errors.lastName}
+                      helperText={errors.lastName?.message}
+                    />
+                  )}
                 />
               </Grid>
+
               {/* Second Row */}
               <Grid item xs={12} sm={6}>
-                <FormControl fullWidth variant="outlined">
+                <FormControl fullWidth variant="outlined" error={!!errors.maritalStatus}>
                   <InputLabel>Marital Status</InputLabel>
-                  <Select
-                    value={maritalStatus}
-                    onChange={handleMaritalStatusChange}
-                    label="Marital Status"
-                  >
-                    <MenuItem value="Single">Single</MenuItem>
-                    <MenuItem value="Married">Married</MenuItem>
-                  </Select>
+                  <Controller
+                    name="maritalStatus"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        label="Marital Status"
+                      >
+                        <MenuItem value="Single">Single</MenuItem>
+                        <MenuItem value="Married">Married</MenuItem>
+                      </Select>
+                    )}
+                  />
+                  <Typography variant="body2" color="error">
+                    {errors.maritalStatus?.message}
+                  </Typography>
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Date of birth"
-                  variant="outlined"
+                <Controller
+                  name="dateOfBirth"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      fullWidth
+                      label="Date of birth"
+                      variant="outlined"
+                      type="date"
+                      InputLabelProps={{ shrink: true }}
+                      error={!!errors.dateOfBirth}
+                      helperText={errors.dateOfBirth?.message}
+                    />
+                  )}
                 />
               </Grid>
+
+              {/* Third Row */}
               <Grid item xs={12} sm={6}>
-                <FormControl fullWidth variant="outlined">
+                <FormControl fullWidth variant="outlined" error={!!errors.gender}>
                   <InputLabel>Gender</InputLabel>
-                  <Select
-                    value={maritalStatus}
-                    onChange={handleMaritalStatusChange}
-                    label="Gender"
-                  >
-                    <MenuItem value="Male">Male</MenuItem>
-                    <MenuItem value="Female">Female</MenuItem>
-                  </Select>
+                  <Controller
+                    name="gender"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        label="Gender"
+                      >
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
+                      </Select>
+                    )}
+                  />
+                  <Typography variant="body2" color="error">
+                    {errors.gender?.message}
+                  </Typography>
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Contact number"
-                  variant="outlined"
+                <Controller
+                  name="contactNumber"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      fullWidth
+                      label="Contact number"
+                      variant="outlined"
+                      error={!!errors.contactNumber}
+                      helperText={errors.contactNumber?.message}
+                    />
+                  )}
                 />
               </Grid>
             </Grid>
-          </div>
-          <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
-           Next
-          </button>
+            <button
+              type="submit"
+              className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50"
+            >
+              Next
+            </button>
+          </form>
         </div>
       </div>
-      <ClientFooter/>
+      <ClientFooter />
     </div>
   );
 }

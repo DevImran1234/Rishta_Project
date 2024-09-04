@@ -1,12 +1,31 @@
 import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import logo from '../../images/logo-blk.png';
-import './Login.css';
 import couple from '../../images/couple.png';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
+
+// Validation Schema
+const validationSchema = Yup.object().shape({
+  username: Yup.string().required('Username is required'),
+  password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
+  otp: Yup.string().required('OTP is required'),
+});
 
 const Login = () => {
   const navigate = useNavigate();
-    
+  
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle login logic here
+  };
+
   useEffect(() => {
     const nextButton = document.getElementById('next');
     const container = document.querySelector('.Logincontainer_1');
@@ -58,40 +77,56 @@ const Login = () => {
         </div>
       </div>
       <div className="rights-side">
-         <div className="login">
-               <h1 className="login_heading">Login</h1>
-               <div className="login_form">
-                  <div className="input_field">
-                     <i className="fas fa-user"></i>
-                     <input type="text" placeholder="Username"  className='Name'/>
-                  </div>
-                  <div className="input_field">
-                     <i className="fas fa-lock"></i>
-                     <input type="password" placeholder="Password"  className='Name'/>
-                  </div>
-                  
-                  {/* OTP Section */}
-                  <div className="otp_section">
-                     <h2>Enter OTP</h2>
-                     <div className="otp_inputs">
-                        <input type="text" maxLength="1" className="otp_input" />
-                        <input type="text" maxLength="1" className="otp_input" />
-                        <input type="text" maxLength="1" className="otp_input" />
-                        <input type="text" maxLength="1" className="otp_input" />
-                     </div>
-                  </div>
-                  
-                  <input type="submit" value="Login" className="btn solid" />
-                  <p className="social-text">Or Signin with</p>
-                  <div className="social-media">
-                    {/* <Facebook/> */}
-                    <span className="logos--facebook"></span>
-                     {/* <Twitter/> */}
-                     <span className="devicon--google"></span>
-                     <span className="logos--twitter"></span>
-                    </div>
-               </div>
-         </div>
+        <div className="login">
+          <h1 className="login_heading">Login</h1>
+          <form className="login_form" onSubmit={handleSubmit(onSubmit)}>
+            <div className="input_field">
+              <i className="fas fa-user"></i>
+              <input 
+                type="text" 
+                placeholder="Username"  
+                className={`Name ${errors.username ? 'is-invalid' : ''}`} 
+                {...register('username')}
+              />
+              <div className="invalid-feedback">{errors.username?.message}</div>
+            </div>
+            <div className="input_field">
+              <i className="fas fa-lock"></i>
+              <input 
+                type="password" 
+                placeholder="Password"  
+                className={`Name ${errors.password ? 'is-invalid' : ''}`} 
+                {...register('password')}
+              />
+              <div className="invalid-feedback">{errors.password?.message}</div>
+            </div>
+            
+            {/* OTP Section */}
+            <div className="otp_section">
+              <h2>Enter OTP</h2>
+              <div className="otp_inputs">
+                {[0, 1, 2, 3].map((index) => (
+                  <input 
+                    key={index} 
+                    type="text" 
+                    maxLength="1" 
+                    className={`otp_input ${errors.otp ? 'is-invalid' : ''}`} 
+                    {...register('otp')}
+                  />
+                ))}
+              </div>
+              <div className="invalid-feedback">{errors.otp?.message}</div>
+            </div>
+            
+            <input type="submit" value="Login" className="btn solid" />
+            <p className="social-text">Or Signin with</p>
+            <div className="social-media">
+              <span className="logos--facebook"></span>
+              <span className="devicon--google"></span>
+              <span className="logos--twitter"></span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

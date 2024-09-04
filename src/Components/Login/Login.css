@@ -12,6 +12,19 @@
 .Logincontainer_1.user-mode{
   transform: translateX(100%);
 }
+.invalid-feedback {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.input_field {
+  margin-bottom: 16px;
+}
+
+.otp_section .invalid-feedback {
+  margin-top: 8px;
+}
 
 .Logincontainer_1.marriage-mode {
   transform: translateX(200%); 
