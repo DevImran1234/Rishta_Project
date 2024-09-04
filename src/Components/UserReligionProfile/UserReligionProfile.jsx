@@ -202,11 +202,8 @@ const UserReligious = () => {
               </div>
             </div>
             
-            <button
-              type="submit"
-              className="mt-8 bg-[#E42B88] text-white py-2 px-6  rounded-lg shadow-md hover:bg-pink-700 "
-            >
-                Next
+            <button type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
+              Next
             </button>
           </form>
         </div>

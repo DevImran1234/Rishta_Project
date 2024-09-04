@@ -3,6 +3,7 @@ import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Plus } from 'lucide-react';
 import ClientFooter from '../ClientFooter/ClientFooter'; // Ensure correct import path
+import Links from '../Links/Links';
 
 const Client = () => {
   return (
@@ -12,21 +13,7 @@ const Client = () => {
       <div className="bg-white h-[90vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
         {/* Buttons container */}
         <div className="flex flex-wrap justify-center items-center w-full space-y-4 md:space-y-0 md:space-x-4 mt-4">
-          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
-            My Clients
-          </button>
-          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
-            Other Clients
-          </button>
-          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
-            Send Request
-          </button>
-          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
-            Received Request
-          </button>
-          <button className="bg-white hover:bg-pink-700 hover:text-white text-pink-500 font-bold py-2 px-6 rounded-lg shadow-lg w-full md:w-auto transition-colors duration-300">
-            Accept Request
-          </button>
+          <Links/>
         </div>
 
         {/* Content container */}

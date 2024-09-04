@@ -1,57 +1,123 @@
 /* Container for the navbar */
 .navbar-div {
-    background:linear-gradient(90deg, rgba(47, 130, 160, 0.4) 0%, rgba(228, 43, 136, 0.4) 100%);
-    padding: 10px 0;
-  }
-  
-  /* Navbar styles */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px; /* Adjust to fit your design */
-    margin: 0 auto;
-    padding: 0 20px;
-    color: #fff; /* Text color for links and other elements */
-  }
-  
-  /* Logo styles */
-  .logo img {
-    height: 40px; /* Adjust logo size as needed */
-  }
-  
-  /* Nav options container */
+  background: linear-gradient(90deg, rgba(47, 130, 160, 0.4) 0%, rgba(228, 43, 136, 0.4) 100%);
+  padding: 10px 0;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Adjust to fit your design */
+  margin: 0 auto;
+  padding: 0 20px;
+  color: #fff; /* Text color for links and other elements */
+}
+
+/* Logo styles */
+.logo img {
+  height: 40px; /* Adjust logo size as needed */
+}
+
+/* Nav options container */
+.nav-options {
+  display: flex;
+  align-items: center;
+}
+
+/* Nav link styles */
+.nav-link {
+  color: black; /* Link color */
+  text-decoration: none;
+  margin: 0 15px; /* Spacing between nav items */
+  font-size: 16px; /* Adjust font size as needed */
+  position: relative; /* Needed for the underline effect */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px; /* Thickness of the underline */
+  background-color: #fff; /* Color of the underline */
+  bottom: -2px; /* Positioning the underline just below the text */
+  left: 50%; /* Start the underline from the center */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Expand the underline to the full width */
+  left: 0; /* Align the underline with the start of the text */
+}
+
+/* Profile button styles */
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Adjust the size of the profile image */
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Initially hidden off the screen */
+  width: 250px;
+  height: 100%;
+  background-color: rgba(47, 130, 160, 0.9); /* Match navbar background */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  padding-top: 60px; /* Space for the navbar */
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  right: 0; /* Slide into view */
+}
+
+.sidebar .nav-link {
+  display: block;
+  margin: 20px;
+  color: #fff; /* Link color in the sidebar */
+  font-size: 18px; /* Slightly larger font for mobile */
+}
+
+/* Menu icon for mobile */
+.menu-icon {
+  display: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Overlay for closing sidebar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
   .nav-options {
-    display: flex;
-    align-items: center;
+    display: none; /* Hide nav options on mobile */
   }
-  
-  /* Nav link styles */
-  .nav-link {
-    color: black; /* Link color */
-    text-decoration: none;
-    margin: 0 15px; /* Spacing between nav items */
-    font-size: 16px; /* Adjust font size as needed */
+
+  .menu-icon {
+    display: block; /* Show menu icon on mobile */
   }
-  
-  .nav-link:hover {
-    color: #ddd; /* Hover color for links */
-  }
-  
-  /* Profile button styles */
-  .profile-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; /* Adjust the size of the profile image */
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .profile-button img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
+}

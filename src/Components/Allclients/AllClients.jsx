@@ -13,7 +13,7 @@ const AllClient = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="client-nav-options">
-          <a href="/home" className="client-nav-link">Home</a>
+          <Link to="/" className="client-nav-link">Home</Link>
           <Bell className='client-nav-link' />
           <div className="client-profile-button">
             <img src={user} alt="Profile" />

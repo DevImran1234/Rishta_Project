@@ -34,7 +34,7 @@ const Clientprofession = () => {
     <div>
       <ClientNavbar />
       <Sidebar />
-      <div className="bg-white flex-grow min-h-[125vh] mt-10 relative flex flex-col items-center w-full max-w-[1100px] mx-auto p-10 box-border rounded-lg shadow-md overflow-x-hidden">
+      <div className="bg-white flex-grow min-h-[125vh] mt-10 relative flex flex-col items-center w-full max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md overflow-x-hidden">
         <div className="absolute top-0 left-0 right-0 bg-pink-700 h-[15vh] flex flex-col items-center justify-center p-4">
           <h1 className='text-3xl font-medium text-white'>
             Create Your Client Profile

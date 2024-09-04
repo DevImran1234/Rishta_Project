@@ -32,8 +32,8 @@ const UserFamily = () => {
       <ClientNavbar />
       <Sidebar />
       <div className="bg-white flex-grow min-h-[125vh] mt-10 relative flex flex-col items-center w-full max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md overflow-x-hidden">
-        <div className="absolute top-0 left-0 right-0 bg-pink-700 h-[10vh] flex flex-col items-center justify-center p-4">
-          <h1 className='text-3xl font-medium text-white'>
+      <div className="absolute top-0 left-0 right-0 bg-pink-700 h-[10vh] flex flex-col items-center justify-center p-4">
+      <h1 className='text-3xl font-medium text-white'>
             Create User Profile
           </h1>
           <p className='text-lg text-white mt-2'>
@@ -133,23 +133,12 @@ const UserFamily = () => {
               </div>
             </div>
 
-            <button 
-              type="submit"
-              className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg mt-8 transition-colors duration-300"
-            >
-             <Plus className="w-5 h-5 mr-2" />
-             Add Client
+            <button type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
+            <Plus className="w-5 h-5 mr-2" />
+               Add Client
             </button>
           </form>
         </div>
-
-        {/* <Link 
-          to="/add-client"
-          className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300"
-        >
-          <Plus className="w-5 h-5 mr-2" />
-          Add Client
-        </Link> */}
       </div>
       <ClientFooter />
     </div>
