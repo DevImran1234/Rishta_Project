@@ -10,7 +10,7 @@ const AcceptRequest = () => {
     <div>
       <ClientNavbar />
       <Sidebar />
-      <div className="bg-white h-[90vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
+      <div className="bg-white h-[100vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
         {/* Buttons container */}
         <div className="flex flex-wrap justify-center items-center w-full space-y-4 md:space-y-0 md:space-x-4 mt-4">
           <Link 
