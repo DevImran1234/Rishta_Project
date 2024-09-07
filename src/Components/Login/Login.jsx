@@ -9,7 +9,7 @@ import './Login.css';
 
 // Validation Schema
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required('Username is required'),
+  username: Yup.string().required('Username is required').min(6, 'Username must be at least 6 characters'),
   password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
   otp: Yup.string().required('OTP is required'),
 });
@@ -88,8 +88,8 @@ const Login = () => {
                 className={`Name ${errors.username ? 'is-invalid' : ''}`} 
                 {...register('username')}
               />
-              <div className="invalid-feedback">{errors.username?.message}</div>
             </div>
+              <div className="invalid-feedback">{errors.username?.message}</div>
             <div className="input_field">
               <i className="fas fa-lock"></i>
               <input 
@@ -98,8 +98,8 @@ const Login = () => {
                 className={`Name ${errors.password ? 'is-invalid' : ''}`} 
                 {...register('password')}
               />
-              <div className="invalid-feedback">{errors.password?.message}</div>
             </div>
+              <div className="invalid-feedback">{errors.password?.message}</div>
             
             {/* OTP Section */}
             <div className="otp_section">
@@ -115,8 +115,8 @@ const Login = () => {
                   />
                 ))}
               </div>
-              <div className="invalid-feedback">{errors.otp?.message}</div>
             </div>
+              <div className="invalid-feedback">{errors.otp?.message}</div>
             
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Signin with</p>

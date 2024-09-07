@@ -54,10 +54,10 @@ const Users = () => {
                   className="input_field"
                   {...register('name')}
                 />
+              </div>
                 {errors.name && (
                   <p className="error_message">{errors.name.message}</p>
                 )}
-              </div>
               <br />
               <div className="input_box_container">
                 <input
@@ -66,10 +66,10 @@ const Users = () => {
                   className="input_field"
                   {...register('password')}
                 />
+              </div>
                 {errors.password && (
                   <p className="error_message">{errors.password.message}</p>
                 )}
-              </div>
               <br />
               <div className="input_box_container">
                 <input
@@ -78,10 +78,10 @@ const Users = () => {
                   className="input_field"
                   {...register('confirmPassword')}
                 />
+              </div>
                 {errors.confirmPassword && (
                   <p className="error_message">{errors.confirmPassword.message}</p>
                 )}
-              </div>
               <div className="button_container">
                 <button type="submit" className="signin_button">
                   Signin
