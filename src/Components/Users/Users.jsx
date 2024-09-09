@@ -33,6 +33,8 @@ const Users = () => {
   const onSubmit = (data) => {
     console.log(data);
     // Handle form submission here
+    // Navigate to another page after successful form submission
+    navigate('/UserCreate-profile');
   };
 
   return (
@@ -55,9 +57,9 @@ const Users = () => {
                   {...register('name')}
                 />
               </div>
-                {errors.name && (
-                  <p className="error_message">{errors.name.message}</p>
-                )}
+              {errors.name && (
+                <p className="error_message">{errors.name.message}</p>
+              )}
               <br />
               <div className="input_box_container">
                 <input
@@ -67,9 +69,9 @@ const Users = () => {
                   {...register('password')}
                 />
               </div>
-                {errors.password && (
-                  <p className="error_message">{errors.password.message}</p>
-                )}
+              {errors.password && (
+                <p className="error_message">{errors.password.message}</p>
+              )}
               <br />
               <div className="input_box_container">
                 <input
@@ -79,9 +81,9 @@ const Users = () => {
                   {...register('confirmPassword')}
                 />
               </div>
-                {errors.confirmPassword && (
-                  <p className="error_message">{errors.confirmPassword.message}</p>
-                )}
+              {errors.confirmPassword && (
+                <p className="error_message">{errors.confirmPassword.message}</p>
+              )}
               <div className="button_container">
                 <button type="submit" className="signin_button">
                   Signin

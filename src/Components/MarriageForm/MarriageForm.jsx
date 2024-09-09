@@ -10,7 +10,6 @@ import { Building, LocateFixedIcon, Lock, Mail, Phone, User } from 'lucide-react
 
 const MarriageForm = () => {
   const navigate = useNavigate();
-  
   return (
     <>
       <div className='container_1 '>

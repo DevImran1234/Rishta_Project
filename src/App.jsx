@@ -35,6 +35,12 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import Settings from './Components/Settings/Settings';
 import Payment from './Components/Payment/Payment';
 import Delete from './Components/Delete/Delete';
+import Dashboard from './Screens/Dashboard';
+import Portal from './Screens/Portal';
+import Userlist from './Screens/UsersData/Userlist';
+import UserCreate from './Screens/UsersData/UserCreate';
+import Userview from './Screens/UsersData/UserView';
+import UserEdit from './Screens/UsersData/UserEdit';
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -87,7 +93,12 @@ const App = () => {
         <Route path="/Settings" element={<Settings/>} />
         <Route path="/payment" element={<Payment/>} />
         <Route path="/DeleteAccount" element={<Delete/>} />
-        {/* <Route path="/" element={<Home/>} /> */}
+         <Route path='/portal' element={<Portal />} />
+        <Route path='/dashboard' element={<Dashboard />} />  
+          <Route path='/portal/user-list' element={<Userlist/>} />
+          <Route path='/portal/create-user' element={<UserCreate />} />
+          <Route path='/portal/user-view/:id' element={<Userview />} />
+          <Route path='/portal/user-edit/:id' element={<UserEdit />} /> 
       </Routes>
     </Router>
   );
