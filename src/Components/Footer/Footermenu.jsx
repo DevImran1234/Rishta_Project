@@ -8,9 +8,9 @@ const Footermenu = () => {
     <div className="footer">
       <div className="footer-containers">
         <div className="column">
-          <h2>ABOUT SHADI®</h2>
+          <h2>ABOUT Rishta®</h2>
           <p>
-            Shadi®.com is a registered and trademarked corporation based in the USA. We are a leading international matchmaking company for singles globally. Through our network, we want to make the process of relationship journey relatively effortless. All profiles are checked manually with phone verification to ensure a safe environment for the users.
+            Rishta®.com is a registered and trademarked corporation based in the USA. We are a leading international matchmaking company for singles globally. Through our network, we want to make the process of relationship journey relatively effortless. All profiles are checked manually with phone verification to ensure a safe environment for the users.
           </p>
         </div>
         <div className="column">
@@ -57,7 +57,7 @@ const Footermenu = () => {
       </div>
       <div className="copyright">
         <p>SHADI® is a registered trademark and should not be used without permission</p>
-        <p>&copy; Copyright Shadi®.com 1997 - 2024. All rights reserved.</p>
+        <p>&copy; Copyright Rishta®.com 1997 - 2024. All rights reserved.</p>
         <img src={rishta} alt="Shadi logo" />
       </div>
     </div>
