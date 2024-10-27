@@ -29,6 +29,7 @@
   top: 20%;
   left: 30%;
 }
+
 .error_message {
   color: red;
   font-size: 12px;
@@ -67,10 +68,16 @@
   position: relative;
   right: 30px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   width: 150%;
   max-width: 400px;
   box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease;
+}
+
+.input_box_container:hover {
+  transform: translateY(-2px); 
 }
 
 .input_field {
@@ -78,6 +85,16 @@
   width: 100% !important;
   border: none;
   outline: none;
+  font-size: 16px; /* Increase font size */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid #E0E0E0; /* Light border for definition */
+  transition: border-color 0.3s ease; /* Transition for border color */
+}
+
+.input_field:focus {
+  border-color: #2F82A0; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(47, 130, 160, 0.5); /* Glow effect */
 }
 
 .button_container {
@@ -100,10 +117,13 @@
   font-weight: 600;
   margin: 10px 0;
   cursor: pointer;
-  transition: 0.5s;
+  transition: background-color 0.5s ease; /* Smooth background transition */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
-.signin_button :hover {
-  background-color: #be2d71;
+
+.signin_button:hover {
+  background-color: #be2d71; /* Change color on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 @media screen and (max-width: 1108px) {
@@ -160,8 +180,9 @@
     flex-direction: column;
     align-items: center;
   }
-   
-  .left_side_container, .right_side_container {
+
+  .left_side_container,
+  .right_side_container {
     width: 100%;
   }
 
