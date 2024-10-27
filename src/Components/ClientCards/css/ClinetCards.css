@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'romanesco';
+    src: url('../fonts/Romanesco-Regular.eot');
+    src: url('../fonts/Romanesco-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Romanesco-Regular.woff2') format('woff2'),
+        url('../fonts/Romanesco-Regular.woff') format('woff'),
+        url('../fonts/Romanesco-Regular.ttf') format('truetype'),
+        url('../fonts/Romanesco-Regular.svg#Romanesco-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

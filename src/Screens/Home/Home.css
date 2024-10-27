@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Romanesco&display=swap");
+
+body{
+  background-color: #fff4f5;
+}
+.couple{
+  background-image: url(../../images/couple-bg.png);
+  height: 120vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.couple_contant{
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+
+.title{
+  font-size: 70px;
+  font-family: "Romanesco";
+  color: #201D1DA8;
+  text-align: center;
+}
+
+.years{
+  width: auto;
+  margin-bottom: 30px;
+}
