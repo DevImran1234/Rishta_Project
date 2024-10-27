@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+<<<<<<< HEAD
 import Home from './Screens/Home/Home';
 import Login from './Screens/Login/Login';
 import Signup from './Screens/Signup/Signup';
@@ -7,14 +8,30 @@ import MarriageForm from './Screens/MarriageForm/MarriageForm';
 import Users from './Components/Users/Users';
 import Client from './Screens/Clients/Client';
 import ClientProfile from './Screens/ClientProfile/ClientProfile';
+=======
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import Signup from './Components/Signup/Signup';
+import MarriageForm from './Components/MarriageForm/MarriageForm';
+import Users from './Components/Users/Users';
+import Client from './Components/Clients/Client';
+import ClientProfile from './Components/ClientProfile/ClientProfile';
+>>>>>>> 17ffd5395bd0a6c345a5705018f40ca8a38087d0
 import OtherClients from './Components/OtherClients/OtherClients';
 import SendRequest from './Components/SendRequest/SendRequest';
 import Loader from './Components/Loader/Loader';
 import ReceivedRequest from './Components/ReceivedRequest/Request'; 
+<<<<<<< HEAD
 import Profile from './Screens//Profile/Profile'; 
 import Religious from './Screens/ReligiousProfile/Religious';
 import AcceptRequest from './Screens/AcceptRequest/Accept';
 import Message from './Screens/Messages/Message';
+=======
+import Profile from './Components/Profile/Profile'; 
+import Religious from './Components/ReligiousProfile/Religious';
+import AcceptRequest from './Components/AcceptRequest/Accept';
+import Message from './Components/Messages/Message';
+>>>>>>> 17ffd5395bd0a6c345a5705018f40ca8a38087d0
 import Clientprofession from './Components/ClientProfession/Clientprofession';
 import Family from './Components/Family/Family';
 import Partner from './Components/Partner/partner';
@@ -33,7 +50,11 @@ import UserFamily from './Components/UserFamily/UserFamily';
 import Userpartner from './Components/UserPartnerDetails/UserPartner';
 import UserProfile from './Components/UserProfile/UserProfile';
 import Settings from './Components/Settings/Settings';
+<<<<<<< HEAD
 import Payment from './Screens/Payment/Payment';
+=======
+import Payment from './Components/Payment/Payment';
+>>>>>>> 17ffd5395bd0a6c345a5705018f40ca8a38087d0
 import Delete from './Components/Delete/Delete';
 import Dashboard from './Screens/Dashboard';
 import Portal from './Screens/Portal';
