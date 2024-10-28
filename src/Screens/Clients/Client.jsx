@@ -1,9 +1,14 @@
 import React from 'react';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+// import ClientNavbar from '..';
+
+// import Sidebar from './../Components/Sidebar/Sidebar';
+
 import { Plus } from 'lucide-react';
-import ClientFooter from '../ClientFooter/ClientFooter'; // Ensure correct import path
-import Links from '../Links/Links';
+// import Links from '../Links/Links';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../Sidebar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
+import Links from '../../Components/Links/Links';
 
 const Client = () => {
   return (

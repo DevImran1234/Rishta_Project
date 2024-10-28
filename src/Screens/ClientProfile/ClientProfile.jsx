@@ -2,12 +2,12 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Camera } from 'lucide-react';
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography, Button } from '@mui/material';
 import image from '../../images/img1.jpg';
-import ClientFooter from '../ClientFooter/ClientFooter';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 // Define the validation schema
 const schema = yup.object({

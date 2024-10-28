@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Camera } from 'lucide-react';
 import image from '../../images/img1.jpg';
-import ClientFooter from '../ClientFooter/ClientFooter';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 const Religious = () => {
   // Initialize react-hook-form

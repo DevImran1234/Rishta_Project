@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import ClientFooter from '../ClientFooter/ClientFooter';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 const Payment = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();

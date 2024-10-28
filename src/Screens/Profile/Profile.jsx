@@ -1,10 +1,11 @@
 import React from 'react';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import ClientFooter from '../ClientFooter/ClientFooter';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+// import ClientFooter from './../Components/ClientFooter/ClientFooter';
 import { Camera, Plus } from 'lucide-react'; // Import Camera icon from Lucide React
 import { Grid, TextField, Typography } from '@mui/material'; // Import MUI components
 import image from '../../images/img1.jpg';
 import { Link } from 'react-router-dom';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 const Profile = () => {
   return (
     <div>

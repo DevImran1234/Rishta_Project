@@ -1,7 +1,8 @@
 import React from 'react'
-import ClientNavbar from '../ClientNavbar/ClientNavbar'
-import Sidebar from '../Sidebar/Sidebar'
-import ClientFooter from '../ClientFooter/ClientFooter'
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+// import Sidebar from './../Components/Sidebar/Sidebar'
+import Sidebar from '../Sidebar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 const Message = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Plus } from 'lucide-react';
-import ClientFooter from '../ClientFooter/ClientFooter'; 
+import ClientFooter from '../../Components/ClientFooter/ClientFooter'; 
 
 const AcceptRequest = () => {
   return (

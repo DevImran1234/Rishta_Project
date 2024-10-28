@@ -1,22 +1,22 @@
-import React from 'react';
-import logo from '../../images/logo-blk.png';
-import '../Users/users.css';
-import group from '../../images/Group.png';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import logo from "../../images/logo-blk.png";
+import "./users.css";
+import group from "../../images/Group.png";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const schema = yup.object().shape({
-  name: yup.string().required('Name is required'),
+  name: yup.string().required("Name is required"),
   password: yup
     .string()
-    .required('Password is required')
-    .min(6, 'Password must be at least 6 characters long'),
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters long"),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm Password is required'),
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
 });
 
 const Users = () => {
@@ -34,7 +34,7 @@ const Users = () => {
     console.log(data);
     // Handle form submission here
     // Navigate to another page after successful form submission
-    navigate('/UserCreate-profile');
+    navigate("/UserCreate-profile");
   };
 
   return (
@@ -54,7 +54,7 @@ const Users = () => {
                   type="text"
                   placeholder="Enter your name"
                   className="input_field"
-                  {...register('name')}
+                  {...register("name")}
                 />
               </div>
               {errors.name && (
@@ -66,7 +66,7 @@ const Users = () => {
                   type="password"
                   placeholder="Password"
                   className="input_field"
-                  {...register('password')}
+                  {...register("password")}
                 />
               </div>
               {errors.password && (
@@ -78,22 +78,24 @@ const Users = () => {
                   type="password"
                   placeholder="Confirm Password"
                   className="input_field"
-                  {...register('confirmPassword')}
+                  {...register("confirmPassword")}
                 />
               </div>
               {errors.confirmPassword && (
-                <p className="error_message">{errors.confirmPassword.message}</p>
+                <p className="error_message">
+                  {errors.confirmPassword.message}
+                </p>
               )}
               <div className="button_container">
                 <button type="submit" className="signin_button">
                   Signin
                 </button>
                 <p className="desc">
-                  Already a member?{' '}
+                  Already a member?{" "}
                   <a
                     href="#"
                     className="a_signin"
-                    onClick={() => navigate('/Signup')}
+                    onClick={() => navigate("/Signup")}
                   >
                     Signup
                   </a>

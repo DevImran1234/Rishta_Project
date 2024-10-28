@@ -17,7 +17,7 @@ const Footermenu = () => {
           <h3>NEED HELP?</h3>
           <ul>
             <li><a href="#">Member Login</a></li>
-            <li><a href="#">Shadi® 101</a></li>
+            <li><a href="#">Rishta® 101</a></li>
             <li><a href="#">Sign Up</a></li>
             <li><a href="#">Member Support</a></li>
           </ul>
