@@ -5,7 +5,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/rsita", {
+    await mongoose.connect("mongodb+srv://devimran733:AfqbzaG1rol4OHap@cluster0.du3g7.mongodb.net/", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

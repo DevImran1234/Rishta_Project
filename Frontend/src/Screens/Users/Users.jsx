@@ -53,7 +53,7 @@ const Users = () => {
                 <input
                   type="text"
                   placeholder="Enter your name"
-                  className="input_field"
+                  className="input_fields"
                   {...register("name")}
                 />
               </div>

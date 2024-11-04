@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import logo from '../../images/logo-blk.png';
 import './Signup.css';
 import couple from '../../images/mask.png';
-import { Eye, EyeOff } from 'lucide-react'; 
+import { Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { handleSignup } from '../../API/SignupApi/SignupAPi';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Signup = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  // Yup validation schema
+  const [loading, setLoading] = useState(false); 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .required('Username is required')
@@ -32,15 +33,30 @@ const Signup = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
-    // Handle successful form submission
-    console.log('Form Data:', data);
-    navigate('/Login'); // Redirect to Login page
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      await handleSignup(data);
+      navigate('/Login');
+    } catch (error) {
+      console.error('Signup failed:', error);
+    } finally {
+      setLoading(false); 
+    }
+  };
+
+  const handleNextClick = () => {
+    const selectedValue = document.querySelector('input[name="users"]:checked')?.value;
+    if (selectedValue === 'User') {
+      navigate('/users');
+    } else if (selectedValue === 'Marriage Consultant') {
+      navigate('/marriage');
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -56,12 +72,18 @@ const Signup = () => {
       <div className="signup-left">
         <div className="circles_zaheers_circle"></div>
         <Link to="/">
-          <img 
-            src={logo} 
-            alt="logo" 
-            className="image_style lg:text-sm" 
-          />
-        </Link>        <div className="firsts-image-signup">
+          <img src={logo} alt="logo" className="image_style lg:text-sm" />
+        </Link>
+        <div className="options">
+          <input type="radio" id="user" name="users" value="User" />
+          <label htmlFor="user">User</label>
+          <br />
+          <input type="radio" id="marriage" name="users" value="Marriage Consultant" />
+          <label htmlFor="marriage">Marriage Consultant</label>
+          <br />
+          <button className="nxt" onClick={handleNextClick}>Next</button>
+        </div>
+        <div className="firsts-image-signup">
           <img src={couple} alt="marriage" />
         </div>
       </div>
@@ -77,7 +99,7 @@ const Signup = () => {
                 className={`Name ${errors.username ? 'is-invalid' : ''}`}
               />
             </div>
-              {errors.username && <p className="error-message">{errors.username.message}</p>}
+            {errors.username && <p className="error-message">{errors.username.message}</p>}
             <div className="input_field">
               <input
                 type="email"
@@ -86,7 +108,7 @@ const Signup = () => {
                 className={`Name ${errors.email ? 'is-invalid' : ''}`}
               />
             </div>
-              {errors.email && <p className="error-message">{errors.email.message}</p>}
+            {errors.email && <p className="error-message">{errors.email.message}</p>}
             <div className="input_field">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -102,7 +124,7 @@ const Signup = () => {
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-              {errors.password && <p className="error-message">{errors.password.message}</p>}
+            {errors.password && <p className="error-message">{errors.password.message}</p>}
             <div className="input_field">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
@@ -118,10 +140,16 @@ const Signup = () => {
                 {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
-              {errors.confirmPassword && (
-                <p className="error-message">{errors.confirmPassword.message}</p>
-              )}
-            <input type="submit" value="Signup" className="btn solid" />
+            {errors.confirmPassword && (
+              <p className="error-message">{errors.confirmPassword.message}</p>
+            )}
+            {loading ? (
+              <div className="loader-container">
+                <CircularProgress />
+              </div>
+            ) : (
+              <input type="submit" value="Signup" className="btn solid" />
+            )}
             <div className="social-media">
               <p>
                 Already have an account?{' '}
