@@ -26,34 +26,34 @@ const Login = () => {
     // Handle login logic here
   };
 
-  useEffect(() => {
-    const nextButton = document.getElementById('next');
-    const container = document.querySelector('.Logincontainer_1');
+  // useEffect(() => {
+  //   const nextButton = document.getElementById('next');
+  //   const container = document.querySelector('.Logincontainer_1');
     
-    const handleNextClick = () => {
-      const selectedValue = document.querySelector('input[name="users"]:checked').value;
-      if (selectedValue === 'User') {
-        container.classList.add('user-mode');
-        setTimeout(() => navigate('/users'), 500);
-      } else if (selectedValue === 'Marriage Consultant') {
-        container.classList.add('marriage-mode');
-        setTimeout(() => navigate('/marriage'), 500);
-      }
-    };
+  //   const handleNextClick = () => {
+  //     const selectedValue = document.querySelector('input[name="users"]:checked').value;
+  //     if (selectedValue === 'User') {
+  //       container.classList.add('user-mode');
+  //       setTimeout(() => navigate('/users'), 500);
+  //     } else if (selectedValue === 'Marriage Consultant') {
+  //       container.classList.add('marriage-mode');
+  //       setTimeout(() => navigate('/marriage'), 500);
+  //     }
+  //   };
 
-    nextButton.addEventListener('click', handleNextClick);
+  //   // nextButton.addEventListener('click', handleNextClick);
     
-    return () => {
-      nextButton.removeEventListener('click', handleNextClick);
-    };
-  }, [navigate]);
+  //   return () => {
+  //     nextButton.removeEventListener('click', handleNextClick);
+  //   };
+  // }, [navigate]);
 
   return (
     <div className="Logincontainer_1">
       <div className="lefts-side">
-        <div className="circles_zaheers"></div>
+        <div className="circles_zaheer"></div>
         <img src={logo} alt="logo" className="image_style lg:text-sm" />
-        <div className="options">
+        {/* <div className="options">
           <input 
             type="radio" 
             id="user" 
@@ -71,7 +71,7 @@ const Login = () => {
           <label htmlFor="marriage">Marriage Consultant</label>
           <br />
           <button className='nxt' id='next'>Next</button>
-        </div>
+        </div> */}
         <div className="firsts-image_login">
           <img src={couple} alt="marriage" />
         </div>
@@ -102,7 +102,7 @@ const Login = () => {
               <div className="invalid-feedback">{errors.password?.message}</div>
             
             {/* OTP Section */}
-            <div className="otp_section">
+            {/* <div className="otp_section">
               <h2>Enter OTP</h2>
               <div className="otp_inputs">
                 {[0, 1, 2, 3].map((index) => (
@@ -116,7 +116,7 @@ const Login = () => {
                 ))}
               </div>
             </div>
-              <div className="invalid-feedback">{errors.otp?.message}</div>
+              <div className="invalid-feedback">{errors.otp?.message}</div> */}
             
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Signin with</p>
