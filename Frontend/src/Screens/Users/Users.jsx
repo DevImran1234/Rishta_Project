@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../images/logo-blk.png";
 import "./users.css";
 import group from "../../images/Group.png";
@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { handleuserSignup } from "../../API/userLogin/userLogin";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
+  email: yup.string().email("Enter a valid email").required("Email is required"),
   password: yup
     .string()
     .required("Password is required")
@@ -21,7 +24,7 @@ const schema = yup.object().shape({
 
 const Users = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false); 
   const {
     register,
     handleSubmit,
@@ -30,82 +33,100 @@ const Users = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission here
-    // Navigate to another page after successful form submission
-    navigate("/UserCreate-profile");
+  const onSubmit = async (data) => {
+    setLoading(true); 
+    try {
+      console.log("Form Data:", data);
+      const response = await handleuserSignup({
+        name: data.name,
+        email: data.email, 
+        password: data.password,
+        role: "user",
+      });
+
+      console.log("Signup successful:", response);
+      navigate("/login");
+
+    } catch (error) {
+      console.error("Error during signup:", error);
+      setLoading(false); 
+    }
   };
 
   return (
-    <>
-      <div className="users_container">
-        <div className="left_side_container">
-          <div className="circle_background"></div>
-          <img src={logo} alt="logo" className="image_style lg:text-sm" />
-          <img src={group} alt="group" className="group_image" />
-        </div>
-        <div className="right_side_container">
-          <div className="user_form_container">
-            <h1 className="user_heading_text">User</h1>
-            <form className="users_form" onSubmit={handleSubmit(onSubmit)}>
-              <div className="input_box_container">
-                <input
-                  type="text"
-                  placeholder="Enter your name"
-                  className="input_fields"
-                  {...register("name")}
-                />
-              </div>
-              {errors.name && (
-                <p className="error_message">{errors.name.message}</p>
-              )}
-              <br />
-              <div className="input_box_container">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="input_field"
-                  {...register("password")}
-                />
-              </div>
-              {errors.password && (
-                <p className="error_message">{errors.password.message}</p>
-              )}
-              <br />
-              <div className="input_box_container">
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="input_field"
-                  {...register("confirmPassword")}
-                />
-              </div>
-              {errors.confirmPassword && (
-                <p className="error_message">
-                  {errors.confirmPassword.message}
-                </p>
-              )}
-              <div className="button_container">
-                <button type="submit" className="signin_button">
-                  Signin
+    <div className="users_container">
+      <div className="left_side_container">
+        <div className="circle_background"></div>
+        <img src={logo} alt="logo" className="image_style lg:text-sm" />
+        <img src={group} alt="group" className="group_image" />
+      </div>
+      <div className="right_side_container">
+        <div className="user_form_container">
+          <h1 className="user_heading_text">User</h1>
+          <form className="users_form" onSubmit={handleSubmit(onSubmit)}>
+            <div className="input_box_container">
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="input_fields"
+                {...register("name")}
+              />
+              {errors.name && <p className="error_message">{errors.name.message}</p>}
+            </div>
+            <br />
+            <div className="input_box_container">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="input_fields"
+                {...register("email")}
+              />
+              {errors.email && <p className="error_message">{errors.email.message}</p>}
+            </div>
+            <br />
+            <div className="input_box_container">
+              <input
+                type="password"
+                placeholder="Password"
+                className="input_fields"
+                {...register("password")}
+              />
+              {errors.password && <p className="error_message">{errors.password.message}</p>}
+            </div>
+            <br />
+            <div className="input_box_container">
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                className="input_fields"
+                {...register("confirmPassword")}
+              />
+              {errors.confirmPassword && <p className="error_message">{errors.confirmPassword.message}</p>}
+            </div>
+
+            <div className="button_container">
+              {loading ? (
+                <CircularProgress size={24} />
+              ) : (
+                <button type="submit" className="signin_button" disabled={loading}>
+                  Sign Up
                 </button>
-                <p className="desc">
-                  Already a member?{" "}
-                  <a
-                    href="#"
-                    className="a_signin"
-                    onClick={() => navigate("/Signup")}
-                  >
-                    Signup
-                  </a>
-                </p>
-              </div>
-            </form>
-          </div>
+              )}
+              <p className="desc">
+                Already a member?{" "}
+                <a
+                  href="#"
+                  className="a_signin"
+                  onClick={() => navigate("/Signup")}
+                >
+                  Sign In
+                </a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
