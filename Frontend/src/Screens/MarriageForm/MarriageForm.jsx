@@ -6,10 +6,10 @@ import flowers from '../../images/flowers.png';
 import { useNavigate } from 'react-router-dom';
 import { Building, LocateFixedIcon, Lock, Mail, Phone, User } from 'lucide-react';
 import { registerConsaltant } from '../../API/MarriageApi/MarriageApi';
+import { CircularProgress } from '@mui/material';
 
 const MarriageForm = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,6 +20,7 @@ const MarriageForm = () => {
     contactNo: '',
     marriageConsultant: true, 
   });
+  const [loading, setLoading] = useState(false); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,13 +32,17 @@ const MarriageForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await registerConsaltant(formData);
-      alert('Registration successful!');
-      navigate('/Login'); 
+      // alert('Registration successful!');
+      console.log(response);
+      navigate('/Login');
     } catch (error) {
-      alert(error.message); 
+      alert(error.message);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -162,7 +167,9 @@ const MarriageForm = () => {
               </div>
 
               <div className="my-buttons">
-                <button type='submit' className='btn'>Signup</button>
+                <button type='submit' className='btn' disabled={loading}>
+                  {loading ? <CircularProgress size={24} color="inherit" /> : 'Signup'}
+                </button>
                 <p className='desc'>
                   Already a member? 
                   <a href="#" className='a_signin' onClick={() => navigate('/Login')}>Signin</a>
