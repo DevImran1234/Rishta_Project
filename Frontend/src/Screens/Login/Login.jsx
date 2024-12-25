@@ -5,11 +5,6 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-// Assuming these images are in the correct path
-// import logo from '../../images/logo-blk.png';
-import couple from '../../images/couple.png';
-
-// Validation Schema
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Username is required').min(6, 'Username must be at least 6 characters'),
   password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
@@ -31,9 +26,9 @@ const Login = () => {
     <div className="Logincontainer_1">
       <div className="lefts-side">
         <div className="circles_zaheer"></div>
-        <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png"} alt="logo" className="image_style" />
+        <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png" alt="logo" className="image_style" />
         <div className="firsts-image_login">
-          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122507/rishta%20images/ovuleu13a1pvpukkhbr5.png"} alt="marriage" />
+          <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1735122507/rishta%20images/ovuleu13a1pvpukkhbr5.png" alt="marriage" />
         </div>
       </div>
       <div className="rights-side">
@@ -49,7 +44,7 @@ const Login = () => {
                 {...register('username')}
               />
             </div>
-            <div className="invalid-feedback">{errors.username?.message}</div>
+            {errors.username && <div className="invalid-feedback">{errors.username.message}</div>}
             <div className="input_field">
               <i className="fas fa-lock"></i>
               <input 
@@ -59,7 +54,7 @@ const Login = () => {
                 {...register('password')}
               />
             </div>
-            <div className="invalid-feedback">{errors.password?.message}</div>
+            {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
             
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with</p>
