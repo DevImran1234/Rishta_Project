@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import '../MarriageForm/MarriageForm.css';
-import logo from '../../images/logo-blk.png';
-import marriage from '../../images/marriage.png';
-import flowers from '../../images/flowers.png';
 import { useNavigate } from 'react-router-dom';
 import { Building, LocateFixedIcon, Lock, Mail, Phone, User } from 'lucide-react';
 import { registerConsaltant } from '../../API/MarriageApi/MarriageApi';
@@ -51,14 +48,14 @@ const MarriageForm = () => {
       <div className='container_1'>
         <div className="left-side">
           <div className="circle_zaheer"></div>
-          <img src={logo} alt="logo" className='image_style lg:text-sm' />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png"} alt="logo" className='image_style lg:text-sm' />
           <div className="first_angle"></div>
           <div className="second_angle"></div>
           <div className="first_image">
-            <img src={marriage} alt="marriage" style={{ width: '100%', height: '100%' }} />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122968/rishta%20images/lvhgs2hapxxrzvbh6wnh.png"} alt="marriage" style={{ width: '100%', height: '100%' }} />
           </div>
           <div className="second_image">
-            <img src={flowers} alt="flowers" style={{ width: '100%', height: '100%' }} />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119592/rishta%20images/vmitpghum7nceyjrro84.png"} alt="flowers" style={{ width: '100%', height: '100%' }} />
           </div>
         </div>
 

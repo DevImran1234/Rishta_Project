@@ -28,7 +28,7 @@ const Cards = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <img src={img} alt="" className="img" />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119589/rishta%20images/gpufnrf8zaayc6yax8db.png"} alt="" className="img" />
             <p>Millions of people register on Shadi.com looking for someone special. This site is for serious singles looking for long-lasting relationships.</p>
           </motion.div>
           <motion.div 
@@ -37,7 +37,7 @@ const Cards = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <img src={img2} alt="" style={{ height: '70px', marginBottom: '30px' }} />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735120961/rishta%20images/ow4nwemupd9anqufgycy.png"} alt="" style={{ height: '70px', marginBottom: '30px' }} />
             <p>80% of our members are highly educated. Most of them are successful professionals in their selected fields.</p>
           </motion.div>
           <motion.div 
@@ -46,7 +46,7 @@ const Cards = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <img src={img3} alt="" className="img" />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119590/rishta%20images/tf361wodu0lrz2qstrd5.png"} alt="" className="img" />
             <p>Shadi.com uses a smart matchmaking system. We present you matches based on current location, education level, and lifestyle choices.</p>
           </motion.div>
         </div>

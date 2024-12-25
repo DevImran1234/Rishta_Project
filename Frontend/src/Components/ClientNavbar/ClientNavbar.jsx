@@ -16,13 +16,13 @@ const ClientNavbar = () => {
     <div className="navbar-div"> 
       <nav className="navbar">
         <div className="logo">
-          <img src={logo} alt="Logo" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119595/rishta%20images/ygj8usznjrirtiegpwxh.png"} alt="Logo" />
         </div>
         <div className="nav-options">
           <Link to="/" className="nav-link">Home</Link>
           <Bell className="nav-link" />
           <div className="profile-button">
-            <img src={image} alt="Profile" />
+            <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119587/rishta%20images/eb37grh0oib5r7aq9kur.jpg"} alt="Profile" />
           </div>
           <Link to="/profile" className="nav-link">Profile</Link>
           <Link to="/" className="nav-link">Logout</Link>

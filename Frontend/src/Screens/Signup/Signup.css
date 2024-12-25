@@ -14,6 +14,46 @@
   height: auto;
   position: relative;
 }
+.options {
+  position: relative;
+  z-index: 6666666;
+  text-align: left;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  padding-left: 40px; /* Shift everything to the right */
+  margin-right: 40px;
+}
+
+.option-item {
+  display: flex;
+  flex-direction: row; /* Arrange the radio button and label side by side */
+  align-items: center; /* Align radio button and label vertically */
+  gap: 10px; /* Add spacing between the radio button and label */
+}
+
+.nxt {
+  width: 150px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #2F82A0;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 20px; /* Add spacing above the button */
+  align-self: flex-start; /* Align button to the left */
+  margin-left: 5px; /* Shift the button slightly to the right */
+  transition: background-color 0.3s ease;
+}
+
+.nxt:hover {
+  background-color: #236b89; /* Slightly darker shade on hover */
+}
+
+
+
 
 .signup-right {
   width: 60%;

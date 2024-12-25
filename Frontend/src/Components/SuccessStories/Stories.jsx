@@ -1,8 +1,4 @@
 import React from 'react';
-import img from '../../images/img7.jpg';
-import img2 from '../../images/img13.jpeg';
-import img3 from '../../images/img5.jpg';
-
 const Stories = () => {
   return (
     <div className="stories px-4 py-8 md:px-8 md:py-12">
@@ -13,7 +9,7 @@ const Stories = () => {
         {/* First Card */}
         <div className="bg-white rounded-lg shadow-md px-4 py-6 md:px-6 md:py-8 flex flex-col justify-center items-center">
           <img
-            src={img}
+            src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119587/rishta%20images/eb37grh0oib5r7aq9kur.jpg"}
             className="rounded-full w-32 h-32 object-cover border-4 border-pink-600 mb-4 md:w-40 md:h-40 md:mb-6"
             alt="Success Story"
           />
@@ -25,7 +21,7 @@ const Stories = () => {
         {/* Second Card */}
         <div className="bg-white rounded-lg shadow-md px-4 py-6 md:px-6 md:py-8 flex flex-col justify-center items-center">
           <img
-            src={img2}
+            src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119590/rishta%20images/ukiyxd26gv6gimh0xrdl.jpg"}
             className="rounded-full w-32 h-32 object-cover border-4 border-pink-600 mb-4 md:w-40 md:h-40 md:mb-6"
             alt="Success Story"
           />
@@ -37,7 +33,7 @@ const Stories = () => {
         {/* Third Card */}
         <div className="bg-white rounded-lg shadow-md px-4 py-6 md:px-6 md:py-8 flex flex-col justify-center items-center">
           <img
-            src={img3}
+            src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119587/rishta%20images/bc2eoaqcnuy8e1qatdey.jpg"}
             className="rounded-full w-32 h-32 object-cover border-4 border-pink-600 mb-4 md:w-40 md:h-40 md:mb-6"
             alt="Success Story"
           />

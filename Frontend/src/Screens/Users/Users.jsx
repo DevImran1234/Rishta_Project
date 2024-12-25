@@ -57,8 +57,8 @@ const Users = () => {
     <div className="users_container">
       <div className="left_side_container">
         <div className="circle_background"></div>
-        <img src={logo} alt="logo" className="image_style lg:text-sm" />
-        <img src={group} alt="group" className="group_image" />
+        <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png"} alt="logo" className="image_style lg:text-sm" />
+        <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119584/rishta%20images/yly4teavmw2j3na250za.png"} alt="group" className="group_image" />
       </div>
       <div className="right_side_container">
         <div className="user_form_container">

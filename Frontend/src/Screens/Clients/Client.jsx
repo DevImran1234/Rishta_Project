@@ -1,12 +1,11 @@
 import React from 'react';
 // import ClientNavbar from '..';
 
-// import Sidebar from './../Components/Sidebar/Sidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 import { Plus } from 'lucide-react';
 // import Links from '../Links/Links';
 import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar';
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 import Links from '../../Components/Links/Links';
 
@@ -15,6 +14,7 @@ const Client = () => {
     <div>
       <ClientNavbar />
       <Sidebar />
+
       <div className="bg-white h-[90vh] mt-10 relative flex flex-col items-center w-[90%] max-w-[1200px] mx-auto p-10 box-border rounded-lg shadow-md">
         {/* Buttons container */}
         <div className="flex flex-wrap justify-center items-center w-full space-y-4 md:space-y-0 md:space-x-4 mt-4">

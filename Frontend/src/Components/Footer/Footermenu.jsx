@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footermenu.css'
-import rishta from '../../images/white.png';
 import { Instagram, Facebook, Twitter } from 'lucide-react';
 
 const Footermenu = () => {
@@ -58,7 +57,7 @@ const Footermenu = () => {
       <div className="copyright">
         <p>SHADI® is a registered trademark and should not be used without permission</p>
         <p>&copy; Copyright Rishta®.com 1997 - 2024. All rights reserved.</p>
-        <img src={rishta} alt="Shadi logo" />
+        <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png"} alt="Shadi logo" />
       </div>
     </div>
   );

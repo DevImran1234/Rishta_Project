@@ -13,7 +13,7 @@ const Relationship = () => {
           <h2 className="font-romanesco text-[#2F82A0] text-4xl md:text-5xl mb-6 text-center">
             Relationship Advice
           </h2>
-          <img src={img} alt="Ring on book" className="w-full mb-6" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735121586/rishta%20images/aex0fv658tifvqzxnczy.jpg"} alt="Ring on book" className="w-full mb-6" />
           <p className="text-gray-600">
             Here we have experts who work hard to write blogs on relationships,
             marriage, dating, and finding love, giving you vista and motivation
@@ -31,7 +31,7 @@ const Relationship = () => {
           <h2 className="font-romanesco text-[#2F82A0] text-4xl md:text-5xl mb-6 text-center">
             Find someone special near you
           </h2>
-          <img src={img2} alt="Couple" className="w-full mb-6" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735121739/rishta%20images/j6mjzbjctynccjci6l6u.webp"} alt="Couple" className="w-full mb-6" />
           <p className="text-gray-600">
             Connect with your soulmate that can be nearby or within your city.
             Our members are committed to looking for long-term healthy
@@ -48,7 +48,7 @@ const Relationship = () => {
           <h2 className="font-romanesco text-[#2F82A0] text-4xl md:text-5xl mb-6 text-center">
             Let a matchmaker help you
           </h2>
-          <img src={img3} alt="img" className="w-full mb-6" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119586/rishta%20images/aby2jidciq1a0apv8gj9.webp"} alt="img" className="w-full mb-6" />
           <p className="text-gray-600">
             If you are a busy professional, then it’s time to think about a
             matchmaker who can help you. There are various reasons to take help

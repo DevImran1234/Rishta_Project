@@ -37,7 +37,7 @@ const Match = () => {
           <h1>Prime Assist</h1>
         </div>
         <div className="engage">
-          <img src={img} alt="Matchmaking" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735121204/Rectangle8_oyjve5.png"} alt="Matchmaking" />
         </div>
         <div className="text">
           <p>
@@ -65,7 +65,7 @@ const Match = () => {
           <h1>Prime Plus</h1>
         </div>
         <div className="engage">
-          <img src={img2} alt="Matchmaking"/>
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119598/rishta%20images/otqk9kjzvu9ditc3fglp.jpg"} alt="Matchmaking"/>
         </div>
         <div className="text">
           <p>

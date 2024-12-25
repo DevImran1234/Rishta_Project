@@ -72,19 +72,23 @@ const Signup = () => {
       <div className="signup-left">
         <div className="circles_zaheers_circle"></div>
         <Link to="/">
-          <img src={logo} alt="logo" className="image_style lg:text-sm" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735122163/rishta%20images/pytw2xvekyn9l0mb0dfx.png"} alt="logo" className="image_style lg:text-sm" />
         </Link>
         <div className="options">
-          <input type="radio" id="user" name="users" value="User" />
-          <label htmlFor="user">User</label>
-          <br />
-          <input type="radio" id="marriage" name="users" value="Marriage Consultant" />
-          <label htmlFor="marriage">Marriage Consultant</label>
-          <br />
-          <button className="nxt" onClick={handleNextClick}>Next</button>
-        </div>
+  <div className="option-item">
+    <input type="radio" id="user" name="users" value="User" />
+    <label htmlFor="user">User</label>
+  </div>
+  <div className="option-item">
+    <input type="radio" id="marriage" name="users" value="Marriage Consultant" />
+    <label htmlFor="marriage">Marriage Consultant</label>
+  </div>
+  <button className="nxt" onClick={handleNextClick}>Next</button>
+</div>
+
+
         <div className="firsts-image-signup">
-          <img src={couple} alt="marriage" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119599/rishta%20images/sduuxj4s00qm1kphy1tl.png"} alt="marriage" />
         </div>
       </div>
       <div className="signup-right">

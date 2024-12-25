@@ -17,7 +17,7 @@ const Home = () => {
       <div className="couple">
         <Navbar />
         <div className="couple_contant">
-          <img src={img1} alt="ghin" className="years" />
+          <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119587/rishta%20images/jm8rdragka8hotqvhiun.png"} alt="ghin" className="years" />
           <p className="title">
             Best Matchmaking <br />
             and Matrimonial Services
