@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../images/logo-blk.png';
 import './Signup.css';
 import couple from '../../images/mask.png';
@@ -66,6 +66,7 @@ const Signup = () => {
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
+  
 
   return (
     <div className="Signupcontainer_1">
@@ -78,6 +79,7 @@ const Signup = () => {
   <div className="option-item">
     <input type="radio" id="user" name="users" value="User" />
     <label htmlFor="user">User</label>
+
   </div>
   <div className="option-item">
     <input type="radio" id="marriage" name="users" value="Marriage Consultant" />
