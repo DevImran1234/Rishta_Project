@@ -14,46 +14,6 @@
   height: auto;
   position: relative;
 }
-.options {
-  position: relative;
-  z-index: 6666666;
-  text-align: left;
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start; /* Align items to the left */
-  padding-left: 40px; /* Shift everything to the right */
-  margin-right: 40px;
-}
-
-.option-item {
-  display: flex;
-  flex-direction: row; /* Arrange the radio button and label side by side */
-  align-items: center; /* Align radio button and label vertically */
-  gap: 10px; /* Add spacing between the radio button and label */
-}
-
-.nxt {
-  width: 150px;
-  height: 40px;
-  border-radius: 40px;
-  background-color: #2F82A0;
-  color: #fff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-top: 20px; /* Add spacing above the button */
-  align-self: flex-start; /* Align button to the left */
-  margin-left: 5px; /* Shift the button slightly to the right */
-  transition: background-color 0.3s ease;
-}
-
-.nxt:hover {
-  background-color: #236b89; /* Slightly darker shade on hover */
-}
-
-
-
 
 .signup-right {
   width: 60%;
@@ -74,7 +34,9 @@
 
 .image_style {
   width: auto;
-  height: 100px;
+  max-width: 100%;
+  height: auto;
+  max-height: 100px;
   padding: 20px 0px 0px 30px;
   position: absolute;
   left: 0px;
@@ -82,8 +44,10 @@
 }
 
 .firsts-image-signup {
-  width: 400px;
-  height: 490px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  max-height: 490px;
   position: absolute;
   z-index: 111;
   top: 250px;
@@ -98,17 +62,10 @@
   text-align: center;
   font-size: 30px;
 }
-.error-message {
-  color: red;
-  font-size: 12px;
-}
-
-.is-invalid {
-  border-color: red;
-}
 
 .Signup {
-  width: 50vw;
+  width: 100%;
+  max-width: 50vw;
   z-index: 1111;
   display: flex;
   flex-direction: column;
@@ -137,11 +94,11 @@
   display: flex;
   align-items: center;
   width: 100%; 
-  position: relative; /* Add this */
+  position: relative;
 }
 
-.input_field_signup input {
-  width: calc(100% - 40px); /* Adjust width to leave space for the toggle button */
+.input_field input {
+  width: 100%;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ddd;
@@ -156,14 +113,6 @@
   border: none;
   background: transparent;
   cursor: pointer;
-}
-
-.input_field button svg {
-  color: #aaa; /* Adjust color as needed */
-}
-
-.input_field i {
-  margin-right: 8px; 
 }
 
 .btn.solid {
@@ -181,20 +130,23 @@
   transition: background-color 0.3s ease;
 }
 
-.btn.solid:hover {
-  background-color: #be2d71; 
-}
-
-.social-text {
-  text-align: center;
-  font-family: 'Poppins' , sans-serif;
-  color: gray;
-}
-
-.social-media {
+.options {
+  position: relative;
+  z-index: 6666666;
+  text-align: left;
+  margin-top: 100px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  margin-right: 40px;
+}
+
+.option-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
-  cursor: pointer;
 }
 
 .nxt {
@@ -202,76 +154,19 @@
   height: 40px;
   border-radius: 40px;
   background-color: #2F82A0;
-  position: relative;
-  left: 30px;
-  top: 5px;
   color: #fff;
-}
-
-.btn {
-  width: 150px;
-  background-color: #de2c7e;
   border: none;
   outline: none;
-  height: 49px;
-  border-radius: 49px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin: 10px 0;
   cursor: pointer;
-  transition: 0.5s;
-}
-
-.btn:hover {
-  background-color: #be2d71;
+  margin-top: 20px;
+  align-self: flex-start;
+  margin-left: 5px;
+  transition: background-color 0.3s ease;
 }
 
 @media screen and (max-width: 1108px) {
   .Signupcontainer_1 {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row;
-    margin: auto !important;
-  }
-
-  .firsts-image-signup {
-    top: 35%;
-  }
-
-  .signup-left {
-    width: 50%;
-    height: auto;
-    position: relative;
-  }
-
-  .Signup_form {
-    width: 90vw;
-    margin-top: 5%;
-  }
-
-  .signup-right {
-    width: 50%;
-    height: auto;
-    margin: auto;
-    margin-top: 0px;
-  }
-
-  .Signup_form {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: 15px;
-    padding-right: 10px;
-    margin-bottom: 12px;
-  }
-}
-
-@media (max-width: 857px) {
-  .Signupcontainer_1 {
     flex-direction: column;
-    align-items: center;
   }
 
   .signup-left, .signup-right {
@@ -279,31 +174,65 @@
   }
 
   .firsts-image-signup {
-    margin-top: 70%;
-    width: 300px;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Signup {
+    max-width: 90vw;
+  }
+
+  .Signup_form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 857px) {
+  .circles_zaheers_circle {
+    width: 200%;
+    min-height: 80vh;
+  }
+
+  .firsts-image-signup {
+    margin-top: 20%;
+    width: 80%;
+    max-width: 300px;
     position: relative;
-    left: 50px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .signup-right {
     margin-top: 10%;
-    margin-right: 50px;
+    padding: 0 20px;
   }
 
-  .circles_zaheers_circle {
-    width: 200%;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: row;
+  .options {
+    padding-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login_heading {
+    font-size: 24px;
   }
 
-  .Signup {
-    width: 90vw;
-    margin-top: 5%;
+  .btn.solid {
+    max-width: 120px;
+    height: 40px;
+    font-size: 14px;
   }
 
-  .Signup_form {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .options {
+    padding-left: 10px;
+    margin-right: 10px;
+  }
+
+  .nxt {
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
   }
 }

@@ -34,9 +34,9 @@ const Client = () => {
         </main>
       </div>
 
-      <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg absolute bottom-4 right-16 md:bottom-6 md:right-20 transition-colors duration-300 z-50">
+      <button className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg absolute bottom-4 right-16 md:bottom-6 md:right-20 transition-colors duration-300  z-50">
         <Plus className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
-        <span className="text-sm md:text-base">Add Client</span>
+        <span className="text-sm md:text-base ">Add Client</span>
       </button>
 
 
