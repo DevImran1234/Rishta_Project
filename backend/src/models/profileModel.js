@@ -14,7 +14,7 @@ const profileSchema = new Schema(
     },
     dateOfBirth: { type: Date, required: true },
     gender: { type: String, enum: ["male", "female", "other"], required: true },
-    contactInfo: contactInfoSchema,
+    contactInfo: { type: Schema.Types.Mixed },
     image: { type: String },
     religiousInfo: { type: Schema.Types.Mixed },
     profession: { type: Schema.Types.Mixed },

@@ -6,7 +6,7 @@ import {
   updateProfile,
   deleteProfile,
 } from "../controllers/profileController.js";
-import upload from "../services/multerConfig.js";
+import upload from "../config/multer.js";
 
 const router = express.Router();
 
