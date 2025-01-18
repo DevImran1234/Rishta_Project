@@ -35,7 +35,8 @@ const MarriageForm = () => {
       const response = await registerConsaltant(formData);
       // alert('Registration successful!');
       console.log(response);
-      navigate('/Login');
+      localStorage.setItem('email', formData.email);
+      navigate('/otp');
     } catch (error) {
       alert(error.message);
     } finally {

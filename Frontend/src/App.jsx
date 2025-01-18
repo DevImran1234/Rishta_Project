@@ -48,6 +48,7 @@ import Userlist from "./Screens/UsersData/Userlist";
 import UserCreate from "./Screens/UsersData/UserCreate";
 import Userview from "./Screens/UsersData/UserView";
 import UserEdit from "./Screens/UsersData/UserEdit";
+import OtpScreen from "./Screens/otp/Otp";
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -106,6 +107,7 @@ const App = () => {
         <Route path="/portal/create-user" element={<UserCreate />} />
         <Route path="/portal/user-view/:id" element={<Userview />} />
         <Route path="/portal/user-edit/:id" element={<UserEdit />} />
+        <Route path="/otp" element={<OtpScreen />} />
       </Routes>
     </Router>
   );
