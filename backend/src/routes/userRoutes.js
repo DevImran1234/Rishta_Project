@@ -4,7 +4,8 @@ import {
   registerUser,
   verifyEmail,
   loginUser,
-  verifyOtp
+  verifyOtp,
+  resendOtp
 } from "../controllers/userController.js";
 
 
@@ -14,5 +15,6 @@ router.post("/register", registerUser);
 // router.post("/verify", verifyEmail);
 router.post("/verify", verifyOtp);
 router.post("/login", loginUser);
+router.post("/resend-otp", resendOtp);
 
 export default router;
