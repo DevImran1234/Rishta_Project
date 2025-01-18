@@ -22,15 +22,16 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Email already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const verificationToken = crypto.randomBytes(32).toString("hex");
+    const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // OTP valid for 10 minutes
 
     const newUser = new User({
       name,
       email,
       password: hashedPassword,
       role,
-      verificationToken,
-      // Include consultant-specific fields if the role is consultant
+      otp,
+      otpExpiry,
       ...(role === "consultant" && {
         companyName,
         companyAddress,
@@ -40,19 +41,48 @@ export const registerUser = async (req, res) => {
 
     await newUser.save();
 
-    const verificationLink = `${process.env.BASE_URL}api/users/verify/${verificationToken}`;
-
     await sendEmail({
       to: newUser.email,
       subject: "Verify Your Email",
-      html: `<p>Click <a href="${verificationLink}">here</a> to verify your email.</p>`,
+      html: `<p>Your OTP for email verification is: <strong>${otp}</strong></p>`,
     });
 
     res.status(200).json({
       message:
-        "Registration successful. Check your email to verify your account.",
+        "Registration successful. Check your email for the OTP to verify your account.",
+        otp:otp
     });
   } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+}
+export const verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    if (user.otp !== otp) {
+      return res.status(400).json({ message: "Invalid OTP" });
+    }
+
+    if (new Date() > user.otpExpiry) {
+      return res.status(400).json({ message: "OTP has expired" });
+    }
+
+    user.isVerified = true;
+    user.otp = undefined; // Clear the OTP
+    user.otpExpiry = undefined; // Clear OTP expiry
+    await user.save();
+
+    res.status(200).json({
+      message: "Email verified successfully. You can now log in.",
+    });
+  } catch (error) {
+    console.error("Error in verifyOtp:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -106,10 +136,18 @@ export const loginUser = async (req, res) => {
 
     const token = generateToken(user);
 
-    res
-      .status(200)
-      .json({ message: "Login successful", token, role: user.role });
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      role: user.role,
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 };
+

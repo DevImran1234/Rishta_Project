@@ -13,7 +13,8 @@ const userSchema = new Schema(
       default: "guest",
     },
     isVerified: { type: Boolean, default: false },
-    verificationToken: String,
+    otp: String, // OTP for verification
+    otpExpiry: Date, // OTP expiration time
     companyName: {
       type: String,
       required: function () {
