@@ -17,9 +17,31 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle login logic here
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.username, 
+          password: data.password,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Login successful:', result);
+        navigate('/dashboard'); 
+      } else {
+        console.error('Login failed:', response.statusText);
+        alert('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      alert('An error occurred. Please try again later.');
+    }
   };
 
   return (
