@@ -5,7 +5,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: row;
-  transition: transform 0.5s ease-in-out; 
+  transition: transform 0.5s ease-in-out;
   overflow: hidden;
 }
 
@@ -26,10 +26,10 @@
   border-radius: 50%;
   position: absolute;
   top: -50%;
-  left: -57%;   
+  left: -57%;
   background-color: #D9D9D982;
   z-index: 4;
-  transition: transform 0.5s ease-in-out; 
+  transition: transform 0.5s ease-in-out;
 }
 
 .image_style {
@@ -77,9 +77,9 @@
 
 .Signup_form {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  gap: 16px; 
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   border-radius: 20px;
   padding: 20px;
   width: 100%;
@@ -93,7 +93,7 @@
 .input_field {
   display: flex;
   align-items: center;
-  width: 100%; 
+  width: 100%;
   position: relative;
 }
 
@@ -118,7 +118,7 @@
 .btn.solid {
   width: 100%;
   max-width: 150px;
-  background-color: #de2c7e; 
+  background-color: #de2c7e;
   border: none;
   outline: none;
   height: 49px;
@@ -133,25 +133,54 @@
 .options {
   position: relative;
   z-index: 6666666;
-  text-align: left;
+  text-align: center;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  gap: 20px; /* Adding gap between the buttons */
   padding-left: 40px;
-  margin-right: 40px;
+  padding-right: 40px;
 }
 
 .option-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center; /* Ensure the buttons are centered horizontally */
+  gap: 20px; /* Add a gap between the buttons */
+}
+
+.option-button {
+  padding: 12px 30px;
+  border: 2px solid #2f82a0;
+  background-color: transparent;
+  color: #2f82a0;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+  outline: none;
+}
+
+.option-button.active {
+  background-color: #2f82a0;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(47, 130, 160, 0.4);
+  transform: translateY(-3px); /* Adds a subtle lift effect */
+}
+
+.option-button:hover {
+  background-color: #2f82a0;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(47, 130, 160, 0.6);
+  transform: translateY(-2px); /* Adds a subtle hover lift effect */
 }
 
 .nxt {
   width: 150px;
-  height: 40px;
+  height: 45px;
   border-radius: 40px;
   background-color: #2F82A0;
   color: #fff;
@@ -159,9 +188,16 @@
   outline: none;
   cursor: pointer;
   margin-top: 20px;
-  align-self: flex-start;
-  margin-left: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.nxt:hover {
+  background-color: #238086; /* Darker shade for hover effect */
+  transform: translateY(-2px); /* Adds lift effect on hover */
+}
+
+.nxt:active {
+  transform: translateY(1px); /* Slight push down on click */
 }
 
 @media screen and (max-width: 1108px) {
@@ -174,7 +210,7 @@
   }
 
   .firsts-image-signup {
-    top: 35%;
+    top: 40%; /* Moved down slightly */
     left: 50%;
     transform: translateX(-50%);
   }
@@ -191,11 +227,13 @@
 @media (max-width: 857px) {
   .circles_zaheers_circle {
     width: 200%;
-    min-height: 80vh;
+    height: 60vh;
+    min-height: auto;
+    top: -30%;
   }
 
   .firsts-image-signup {
-    margin-top: 20%;
+    margin-top: 25%; /* Increased from 20% to move it down */
     width: 80%;
     max-width: 300px;
     position: relative;
@@ -204,7 +242,7 @@
   }
 
   .signup-right {
-    margin-top: 10%;
+    margin-top: 15%; /* Increased from 10% to accommodate the lower image */
     padding: 0 20px;
   }
 
@@ -215,8 +253,18 @@
 }
 
 @media (max-width: 480px) {
+  .circles_zaheers_circle {
+    height: 50vh;
+    top: -25%;
+  }
+
+  .firsts-image-signup {
+    margin-top: 30%; /* Further increased to move it down on smaller screens */
+  }
+
   .login_heading {
     font-size: 24px;
+    margin-bottom: 20px; /* Added margin for spacing below "Join Now" */
   }
 
   .btn.solid {
@@ -226,13 +274,35 @@
   }
 
   .options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Stack the buttons vertically */
+    align-items: center; /* Center the buttons */
     padding-left: 10px;
     margin-right: 10px;
+    margin-top: 30px; /* Added margin to separate from the heading */
+  }
+
+  .option-item {
+    width: 100%; /* Make buttons fill the container on mobile */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px; /* Space between buttons */
+  }
+
+  .option-button {
+    padding: 10px 20px; /* Adjust padding to make buttons smaller */
+    font-size: 14px; /* Adjust font size */
+    width: 80%; /* Make buttons fill the available space */
+    max-width: 320px; /* Set a max width for buttons */
   }
 
   .nxt {
-    width: 120px;
-    height: 35px;
-    font-size: 14px;
+    width: 100%; /* Make the "Next" button full width on mobile */
+    max-width: 200px; /* Limit the max width */
+    height: 45px;
+    font-size: 16px;
+    margin-top: 20px;
   }
 }
+
