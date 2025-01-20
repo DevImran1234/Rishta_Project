@@ -1,10 +1,14 @@
+import { log } from "console";
 import Profile from "../models/profileModel.js";
 import fs from "fs";
 
 // Create Profile
 export const createProfile = async (req, res) => {
-  const { userId, firstName, lastName, maritalStatus, dateOfBirth, gender, contactInfo, religiousInfo, profession, familyDetails, partnerPreferences } =
+  const {  firstName, lastName, maritalStatus, dateOfBirth, gender, contactInfo, religiousInfo, profession, familyDetails, partnerPreferences } =
     req.body;
+    const userId = req.user.id
+    console.log("id " , userId);
+    
 
   try {
     const newProfile = new Profile({
