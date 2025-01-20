@@ -37,21 +37,23 @@ const Users = () => {
     setLoading(true); 
     try {
       console.log("Form Data:", data);
+        localStorage.setItem('email', data.email);
       const response = await handleuserSignup({
         name: data.name,
         email: data.email, 
         password: data.password,
         role: "user",
       });
-
+  
       console.log("Signup successful:", response);
-      navigate("/login");
-
+      navigate("/otp");
+  
     } catch (error) {
       console.error("Error during signup:", error);
       setLoading(false); 
     }
   };
+  
 
   return (
     <div className="users_container">

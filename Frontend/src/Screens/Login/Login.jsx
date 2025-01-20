@@ -29,11 +29,16 @@ const Login = () => {
           password: data.password,
         }),
       });
-
+  
       if (response.ok) {
         const result = await response.json();
         console.log('Login successful:', result);
-        navigate('/dashboard'); 
+     localStorage.setItem('usertoken', result.token);
+          if (result.role === 'user') {
+          navigate('/UserCreate-profile');
+        } else {
+          alert('You do not have the required role to access this page.');
+        }
       } else {
         console.error('Login failed:', response.statusText);
         alert('Login failed. Please check your credentials.');
@@ -43,6 +48,7 @@ const Login = () => {
       alert('An error occurred. Please try again later.');
     }
   };
+  
 
   return (
     <div className="Logincontainer_1">
