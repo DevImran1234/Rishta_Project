@@ -1,5 +1,5 @@
 import React from "react";
-import { TailSpin } from "react-loader-spinner";
+import "./Loader.css"; // Import the loader CSS file
 
 const LoadingSpinner = () => (
   <div
@@ -10,7 +10,7 @@ const LoadingSpinner = () => (
       height: "100vh",
     }}
   >
-    <TailSpin height="50" width="50" color="#ff1493" />
+    <div className="loader"></div> {/* Custom loader */}
   </div>
 );
 

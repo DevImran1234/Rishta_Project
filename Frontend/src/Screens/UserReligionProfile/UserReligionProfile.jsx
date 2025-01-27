@@ -1,12 +1,16 @@
-import React from 'react';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import React, { useEffect, useState } from 'react';
+
 import { Camera, Plus } from 'lucide-react';
 import image from '../../images/img1.jpg';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller ,  } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
-import ClientFooter from '../ClientFooter/ClientFooter';
+
 import * as yup from 'yup';
+import { useLocation, useNavigate } from 'react-router-dom';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
+
 
 const schema = yup.object().shape({
   nationality: yup.string().required('Nationality is required'),
@@ -20,14 +24,45 @@ const schema = yup.object().shape({
 });
 
 const UserReligious = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const navigate = useNavigate();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
+  
 
   const onSubmit = (data) => {
     console.log(data);
   };
 
+  
+  const location = useLocation();
+  const { state } = location;
+  const userData = state?.formData; 
+  
+  useEffect(() => {
+    if (userData) {
+      console.log("Received User Data:", userData); 
+    }
+  }, [userData]);
+
+  const handlenextclick = () => {
+    const formData = {
+      nationality: watch('nationality'),
+      residence: watch('residence'),
+      ethnicity: watch('ethnicity'),
+      province: watch('province'),
+      religion: watch('religion'),
+      caste: watch('caste'),
+      city: watch('city'),
+      sect: watch('sect'),
+    };
+  
+    const mergedData = { ...userData, ...formData };
+      navigate("/UserProfession", { state: { formData: mergedData } });
+      console.log(mergedData);
+      
+  };
+  
   return (
     <div>
       <ClientNavbar />
@@ -202,9 +237,14 @@ const UserReligious = () => {
               </div>
             </div>
             
-            <button type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
-              Next
-            </button>
+            <button
+  type="button"
+  onClick={handlenextclick}
+  className="flex items-center justify-center bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg mt-8"
+>
+  Next
+</button>
+
           </form>
         </div>
       </div>

@@ -1,34 +1,28 @@
-/* src/Components/Loader/Loader.css */
-.loader-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: pink;  */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+/* loader.css */
+.loader {
+  width: 40px;
+  height: 40px;
+  --c: no-repeat linear-gradient(#ff1493 0 0); /* Updated to use #ff1493 */
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 21px 21px;
+  animation: l5 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+@keyframes l5 {
+  0% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
   }
-  
-  .loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  33% {
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    width: 60px;
+    height: 60px;
   }
-  
-  .spinner {
-    border: 16px solid #f3f3f3; 
-    border-top: 10px solid #ff1493; 
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+  66% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+    width: 60px;
+    height: 60px;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  100% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0;
   }
-  
+}

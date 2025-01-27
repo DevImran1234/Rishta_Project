@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Camera } from 'lucide-react';
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import image from '../../images/img1.jpg'; // Default image
-import ClientFooter from '../ClientFooter/ClientFooter';
-import axios from 'axios';
+import image from '../../images/img1.jpg'; 
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object().shape({
   firstName: yup.string().required('First name is required'),
@@ -20,34 +20,25 @@ const validationSchema = yup.object().shape({
 });
 
 const UserCreateProfile = () => {
+  const navigate = useNavigate();
   const [profileImage, setProfileImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors }, getValues } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async (data) => {
-    try {
-      const formData = new FormData();
-      formData.append('firstName', data.firstName);
-      formData.append('lastName', data.lastName);
-      formData.append('maritalStatus', data.maritalStatus);
-      formData.append('dateOfBirth', data.dateOfBirth);
-      formData.append('gender', data.gender);
-      formData.append('contactInfo', JSON.stringify({ contactNumber: data.contactNumber }));
-      if (profileImage) {
-        formData.append('image', profileImage);
-      }
-      const response = await axios.post('http://localhost:8000/api/profile', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log('Profile created successfully:', response.data);
-    } catch (error) {
-      console.error('Error creating profile:', error);
-    }
+    console.log(data);
   };
+
+  const handlenextClick = () => {
+    const formData = getValues();
+    console.log("Form Data:", formData); 
+    navigate("/UserCreate-Religion", { state: { formData } });
+  };
+
+  
+  
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -123,23 +114,26 @@ const UserCreateProfile = () => {
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                <FormControl fullWidth variant="outlined" error={!!errors.maritalStatus}>
-                  <InputLabel>Marital Status</InputLabel>
-                  <Controller
-                    name="maritalStatus"
-                    control={control}
-                    render={({ field }) => (
-                      <Select {...field} label="Marital Status">
-                        <MenuItem value="Single">Single</MenuItem>
-                        <MenuItem value="Married">Married</MenuItem>
-                      </Select>
-                    )}
-                  />
-                  <Typography variant="body2" color="error">
-                    {errors.maritalStatus?.message}
-                  </Typography>
-                </FormControl>
-              </Grid>
+  <FormControl fullWidth variant="outlined" error={!!errors.maritalStatus}>
+    <InputLabel>Marital Status</InputLabel>
+    <Controller
+      name="maritalStatus"
+      control={control}
+      render={({ field }) => (
+        <Select {...field} label="Marital Status">
+          <MenuItem value="single">Single</MenuItem>
+          <MenuItem value="married">Married</MenuItem>
+          <MenuItem value="divorced">Divorced</MenuItem>
+          <MenuItem value="widowed">Widowed</MenuItem>
+        </Select>
+      )}
+    />
+    <Typography variant="body2" color="error">
+      {errors.maritalStatus?.message}
+    </Typography>
+  </FormControl>
+</Grid>
+
               <Grid item xs={12} sm={6}>
                 <Controller
                   name="dateOfBirth"
@@ -167,8 +161,9 @@ const UserCreateProfile = () => {
                     control={control}
                     render={({ field }) => (
                       <Select {...field} label="Gender">
-                        <MenuItem value="Male">Male</MenuItem>
-                        <MenuItem value="Female">Female</MenuItem>
+                        <MenuItem value="male">male</MenuItem>
+                        <MenuItem value="female">female</MenuItem>
+                        <MenuItem value="other">other</MenuItem>
                       </Select>
                     )}
                   />
@@ -195,7 +190,8 @@ const UserCreateProfile = () => {
               </Grid>
             </Grid>
             <button
-              type="submit"
+              onClick={handlenextClick}
+              type="button"
               className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg mt-8 transition-colors duration-300"
             >
               Next

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
-import { Camera } from 'lucide-react'; // Import Camera icon from Lucide React
-import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material'; // Import MUI components
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import { Camera } from 'lucide-react'; 
+import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material'; 
 import image from '../../images/img1.jpg';
-import ClientFooter from '../ClientFooter/ClientFooter';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 // Define the validation schema using Yup
 const schema = yup.object().shape({
+  
   religion: yup.string().required('Religion is required'),
   age: yup.number().required('Age is required').min(1, 'Age must be at least 1'),
   caste: yup.string().required('Caste is required'),
@@ -20,14 +24,53 @@ const schema = yup.object().shape({
 });
 
 const Userpartner = () => {
+  const navigate = useNavigate()
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const token = localStorage.getItem("usertoken"); 
+    
+    if (!token) {
+      console.error('No token found in localStorage');
+      return;
+    }
+  
+    const payload = {
+      ...formData,  
+      religion: data.religion, 
+      age: data.age,
+      caste: data.caste,
+      height: data.height,
+      sect: data.sect,
+      residence: data.residence
+    };
+    
+    const headers = {
+      Authorization: `Bearer ${token}`, 
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:8000/api/profile', payload, { headers });
+  
+      console.log('Profile saved successfully:', response.data);
+      navigate("/users-side")
+    } catch (error) {
+      console.error('Error saving profile:', error.response?.data || error.message);
+    }
   };
+  
+  
+  const location = useLocation();
+  const formData = location.state?.formData;
+
+  useEffect(() => {
+    if (formData) {
+      console.log("Received User Data in UserProfessional:", formData);
+    }
+  }, [formData]);
 
   return (
     <div>
@@ -189,7 +232,7 @@ const Userpartner = () => {
               </Grid>
             </Grid>
             <button type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
-              Next
+              Save
             </button>
           </form>
         </div>

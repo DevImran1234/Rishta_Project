@@ -1,9 +1,10 @@
 import React from 'react';
 import { Star, FileText, Info, Share, ChevronRight } from 'lucide-react'; // Import icons from Lucide
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import UseSidebar from '../UsersSidebar/UsersSidebar';
-import ClientFooter from '../ClientFooter/ClientFooter';
+
 import { Link } from 'react-router-dom';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import UseSidebar from '../../Components/UsersSidebar/UsersSidebar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 const Settings = () => {
   return (

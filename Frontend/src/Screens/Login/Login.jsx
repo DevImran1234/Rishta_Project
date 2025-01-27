@@ -4,13 +4,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-
+import { useDispatch } from 'react-redux';
+import {loginSuccess}  from '../../reduxToolkit/authSlice'
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Username is required').min(6, 'Username must be at least 6 characters'),
   password: Yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
 });
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -21,33 +23,35 @@ const Login = () => {
     try {
       const response = await fetch('http://localhost:8000/api/users/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: data.username, 
           password: data.password,
         }),
       });
   
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Login successful:', result);
-     localStorage.setItem('usertoken', result.token);
-          if (result.role === 'user') {
-          navigate('/UserCreate-profile');
-        } else {
-          alert('You do not have the required role to access this page.');
-        }
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.message || 'Login failed. Please check your credentials.');
+        return;
+      }
+  
+      const result = await response.json();
+  
+      dispatch(loginSuccess(result.token));
+  
+      localStorage.setItem('usertoken', result.token);
+        if (result.role === 'user') {
+        navigate('/UserCreate-profile');
       } else {
-        console.error('Login failed:', response.statusText);
-        alert('Login failed. Please check your credentials.');
+        alert('You do not have the required role to access this page.');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error('Login error:', error);
       alert('An error occurred. Please try again later.');
     }
   };
+  
   
 
   return (

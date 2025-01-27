@@ -1,13 +1,15 @@
-import React from 'react';
-import ClientNavbar from '../ClientNavbar/ClientNavbar';
-import Sidebar from '../Sidebar/Sidebar';
+import React, { useEffect } from 'react';
+
 import { Camera, Plus } from 'lucide-react';
 import image from '../../images/img1.jpg';
-import ClientFooter from '../ClientFooter/ClientFooter';
-import { Link } from 'react-router-dom';
+
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
 // Define the validation schema using Yup
 const schema = yup.object().shape({
@@ -19,13 +21,28 @@ const schema = yup.object().shape({
 });
 
 const UserFamily = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const navigate = useNavigate()
+  const { register, handleSubmit, getValues ,formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const location = useLocation();
+  const formData = location.state?.formData;
+
+  useEffect(() => {
+    if (formData) {
+      console.log("Received User Data in UserProfessional:", formData);
+    }
+  }, [formData]);
   const onSubmit = data => {
     console.log(data);
   };
+
+  const handlenextclick = () => {
+    const data = getValues(); 
+    navigate("/UserPartner", { state: { formData: { ...formData, ...data } } });
+  };
+  
 
   return (
     <div>
@@ -133,9 +150,8 @@ const UserFamily = () => {
               </div>
             </div>
 
-            <button type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
-            <Plus className="w-5 h-5 mr-2" />
-               Add Client
+            <button onClick={handlenextclick} type="submit" className="flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg absolute bottom-6 right-8 transition-colors duration-300 z-50">
+               Next
             </button>
           </form>
         </div>

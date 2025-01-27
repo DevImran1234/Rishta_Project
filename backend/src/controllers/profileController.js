@@ -18,11 +18,11 @@ export const createProfile = async (req, res) => {
       maritalStatus,
       dateOfBirth,
       gender,
-      contactInfo: JSON.parse(contactInfo),
-      religiousInfo: JSON.parse(religiousInfo),
-      profession: JSON.parse(profession),
-      familyDetails: JSON.parse(familyDetails),
-      partnerPreferences: JSON.parse(partnerPreferences),
+      contactInfo: contactInfo,
+      religiousInfo: religiousInfo,
+      profession: profession,
+      familyDetails: familyDetails,
+      partnerPreferences: partnerPreferences,
       image: req.file ? req.file.path : null,
     });
 
@@ -30,6 +30,8 @@ export const createProfile = async (req, res) => {
     res.status(201).json({ message: "Profile created successfully", profile: newProfile });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
+    console.log(error);
+    
   }
 };
 

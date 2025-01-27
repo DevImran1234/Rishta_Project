@@ -26,20 +26,18 @@ import Clientprofession from "./Components/ClientProfession/Clientprofession";
 import Family from "./Components/Family/Family";
 import Partner from "./Components/Partner/partner";
 import Against from "./Components/ClientAgainstRequest/Against";
-import UsersSide from "./Components/UsersSide/UsersSide";
+
 import Caste from "./Components/caste/caste";
 import UserReligion from "./Components/UserReligion/UserReiligion";
 import Section from "./Components/Section/Section";
 import UserHeight from "./Components/Height/Height";
 import UserResidence from "./Components/UserResidence/UserResidence";
 import UserFavourites from "./Components/UserFavourites/UserFavourites";
-import UserCreateProfile from "./Components/UserCreateProfile/UserCreateProfile";
-import UserReligious from "./Components/UserReligionProfile/UserReligionProfile";
-import UserProfessional from "./Components/UserProfessional/UserProfessional";
-import UserFamily from "./Components/UserFamily/UserFamily";
-import Userpartner from "./Components/UserPartnerDetails/UserPartner";
+import UserCreateProfile from "./Screens/UserCreateProfile/UserCreateProfile";
+
+import Userpartner from "./Screens/UserPartnerDetails/UserPartner";
 import UserProfile from "./Components/UserProfile/UserProfile";
-import Settings from "./Components/Settings/Settings";
+import Settings from "./Screens/Settings/Settings";
 import Payment from "./Screens/Payment/Payment";
 import Delete from "./Components/Delete/Delete";
 import Dashboard from "./Screens/Dashboard";
@@ -49,6 +47,13 @@ import UserCreate from "./Screens/UsersData/UserCreate";
 import Userview from "./Screens/UsersData/UserView";
 import UserEdit from "./Screens/UsersData/UserEdit";
 import OtpScreen from "./Screens/otp/Otp";
+import ProtectedRoute from "./ProtectedRoute";
+import SubscriptionForm from "./Screens/PaymentOption/PaymentOption";
+import UsersSide from "./Screens/UsersSide/UsersSide";
+import UserReligious from "./Screens/UserReligionProfile/UserReligionProfile";
+import UserProfessional from "./Screens/UserProfessional/UserProfessional";
+import UserFamily from "./Screens/UserFamily/UserFamily";
+import UserCreateProfileEdit from "./Screens/UserCreateProfileEdit/UserCreateProfileEdit";
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -72,35 +77,51 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/marriage" element={<MarriageForm />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/Messages" element={<Message />} />
-        <Route path="/clients" element={<Client />} />
-        <Route path="/client-profile" element={<ClientProfile />} />
-        <Route path="/Client-profession" element={<Clientprofession />} />
-        <Route path="/other-clients" element={<OtherClients />} />
-        <Route path="/send-requests" element={<SendRequest />} />
-        <Route path="/received-request" element={<ReceivedRequest />} />
-        <Route path="/accept-request" element={<AcceptRequest />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/client-religious" element={<Religious />} />
-        <Route path="/Family" element={<Family />} />
-        <Route path="/partner-details" element={<Partner />} />
-        <Route path="/AgainstRequest" element={<Against />} />
-        <Route path="/users-side" element={<UsersSide />} />
-        <Route path="/cast" element={<Caste />} />
-        <Route path="/user-religion" element={<UserReligion />} />
-        <Route path="/Section" element={<Section />} />
-        <Route path="/user-height" element={<UserHeight />} />
-        <Route path="/user-residence" element={<UserResidence />} />
-        <Route path="/user-favourite" element={<UserFavourites />} />
-        <Route path="/UserCreate-profile" element={<UserCreateProfile />} />
-        <Route path="/UserCreate-Religion" element={<UserReligious />} />
-        <Route path="/UserProfession" element={<UserProfessional />} />
-        <Route path="/UserFamily" element={<UserFamily />} />
-        <Route path="/UserPartner" element={<Userpartner />} />
-        <Route path="/UserProfile" element={<UserProfile />} />
-        <Route path="/Settings" element={<Settings />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/DeleteAccount" element={<Delete />} />
+        <Route path="/Messages" element={<ProtectedRoute><Message /></ProtectedRoute>} />
+        <Route path="/clients" element={<ProtectedRoute><Client /></ProtectedRoute>} />
+        <Route path="/client-profile" element={<ProtectedRoute><ClientProfile /></ProtectedRoute>} />
+        <Route path="/Client-profession" element={<ProtectedRoute><Clientprofession /></ProtectedRoute>} />
+        <Route path="/other-clients" element={<ProtectedRoute><OtherClients /></ProtectedRoute>} />
+        <Route path="/send-requests" element={<ProtectedRoute><SendRequest /></ProtectedRoute>} />
+        <Route path="/received-request" element={<ProtectedRoute><ReceivedRequest /></ProtectedRoute>} />
+        <Route path="/accept-request" element={<ProtectedRoute><AcceptRequest /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/client-religious" element={<ProtectedRoute><Religious /></ProtectedRoute>} />
+        <Route path="/Family" element={<ProtectedRoute><Family /></ProtectedRoute>} />
+        <Route path="/partner-details" element={<ProtectedRoute><Partner /></ProtectedRoute>} />
+        <Route path="/AgainstRequest" element={<ProtectedRoute><Against /></ProtectedRoute>} />
+        <Route path="/users-side" element={<ProtectedRoute><UsersSide /></ProtectedRoute>} />
+        <Route path="/cast" element={<ProtectedRoute><Caste /></ProtectedRoute>} />
+        <Route path="/user-religion" element={<ProtectedRoute><UserReligion /></ProtectedRoute>} />
+        <Route path="/Section" element={<ProtectedRoute><Section /></ProtectedRoute>} />
+        <Route path="/user-height" element={<ProtectedRoute><UserHeight /></ProtectedRoute>} />
+        <Route path="/user-residence" element={<ProtectedRoute><UserResidence /></ProtectedRoute>} />
+        <Route path="/user-favourite" element={<ProtectedRoute><UserFavourites /></ProtectedRoute>} />
+        <Route
+            path="/UserCreate-profile"
+            element={
+              <ProtectedRoute>
+                <UserCreateProfile />
+              </ProtectedRoute>
+            }
+          />        
+        <Route
+            path="/UserEditProfile/:id"
+            element={
+              <ProtectedRoute>
+                <UserCreateProfileEdit />
+              </ProtectedRoute>
+            }
+          />        
+          
+          <Route path="/UserCreate-Religion" element={<ProtectedRoute><UserReligious /></ProtectedRoute>} />
+        <Route path="/UserProfession" element={<ProtectedRoute><UserProfessional /></ProtectedRoute>} />
+        <Route path="/UserFamily" element={<ProtectedRoute><UserFamily /></ProtectedRoute>} />
+        <Route path="/UserPartner" element={<ProtectedRoute><Userpartner /></ProtectedRoute>} />
+        <Route path="/UserProfile/:id" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path="/Settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+        <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+        {/* <Route path="/DeleteAccount" element={<Delete />} /> */}
         <Route path="/portal" element={<Portal />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/portal/user-list" element={<Userlist />} />
@@ -108,6 +129,7 @@ const App = () => {
         <Route path="/portal/user-view/:id" element={<Userview />} />
         <Route path="/portal/user-edit/:id" element={<UserEdit />} />
         <Route path="/otp" element={<OtpScreen />} />
+        <Route path="/subscribe" element={<SubscriptionForm/>}/>
       </Routes>
     </Router>
   );
