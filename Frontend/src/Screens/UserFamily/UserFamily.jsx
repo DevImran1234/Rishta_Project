@@ -59,18 +59,16 @@ const UserFamily = () => {
         </div>
 
         <div className="flex flex-col items-center mt-24">
-          {/* Circular Container */}
-          <div className="relative">
+          {/* <div className="relative">
             <img
               src={image} 
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />
-            {/* Camera Icon */}
             <div className="absolute bottom-0 right-0 bg-[#E42B88] rounded-full p-2 shadow-lg">
               <Camera className="w-6 h-6 text-white" />
             </div>
-          </div>
+          </div> */}
 
           {/* Form Section */}
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-5xl mt-12">

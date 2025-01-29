@@ -96,11 +96,12 @@ export const deleteProfile = async (req, res) => {
     const profile = await Profile.findById(req.params.id);
     if (!profile) return res.status(404).json({ message: "Profile not found" });
 
-    if (profile.image) fs.unlinkSync(profile.image); // Delete image
-    await profile.remove();
-
+    // if (profile.image) fs.unlinkSync(profile.image); 
+    // await profile.remove();
     res.status(200).json({ message: "Profile deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
+    console.log(error);
+    
   }
 };
