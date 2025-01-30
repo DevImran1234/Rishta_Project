@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import $ from 'jquery';
 import '../Matchmaker/MatchMaker.css';
-import img from '../../images/Rectangle8.png';
-import img2 from '../../images/img3.jpg';
+
 
 const Match = () => {
   useEffect(() => {

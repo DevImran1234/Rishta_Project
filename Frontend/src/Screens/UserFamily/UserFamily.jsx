@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 import { Camera, Plus } from 'lucide-react';
-import image from '../../images/img1.jpg';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Camera } from 'lucide-react';
-import image from '../../images/img1.jpg';
+// import image from '../../images/img1.jpg';
 import ClientFooter from '../ClientFooter/ClientFooter';
 
 // Validation schema with yup
@@ -48,7 +48,7 @@ const Clientprofession = () => {
           {/* Circular Container */}
           <div className="relative">
             <img
-              src={image}
+              src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png"
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />

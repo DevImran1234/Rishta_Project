@@ -5,7 +5,7 @@ import { Camera } from "lucide-react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import image from "../../images/img1.jpg";
+// import image from "../../images/img1.jpg";
 import ClientFooter from "../../Components/ClientFooter/ClientFooter";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -121,7 +121,7 @@ const UserCreateProfileEdit = () => {
         <div className="flex flex-col items-center mt-24 w-full">
           <div className="relative">
             <img
-              src={imagePreview || image}
+              src={imagePreview || "https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png"}
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />

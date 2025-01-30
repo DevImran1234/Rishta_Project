@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Camera } from 'lucide-react';
-import image from '../../images/img1.jpg';
+//import image from '../../images/img1.jpg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
@@ -61,7 +61,7 @@ const UserProfessional = () => {
           {/* Circular Container */}
           <div className="relative">
             <img
-              src={image}
+              src='https://res.cloudinary.com/dh32zavox/image/upload/v1735119595/rishta%20images/ygj8usznjrirtiegpwxh.png'
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />

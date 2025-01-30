@@ -6,7 +6,6 @@ import { FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography 
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import image from '../../images/img1.jpg'; 
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,7 +61,7 @@ const UserCreateProfile = () => {
           {/* Circular Image with Camera Icon */}
           <div className="relative">
             <img
-              src={profileImage ? URL.createObjectURL(profileImage) : image}
+              src={profileImage ? URL.createObjectURL(profileImage) : ""}
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />

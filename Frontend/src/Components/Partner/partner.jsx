@@ -4,7 +4,7 @@ import ClientNavbar from '../ClientNavbar/ClientNavbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Camera } from 'lucide-react'; // Import Camera icon from Lucide React
 import { FormControl, Grid, InputLabel, MenuItem, Select, Button, Typography } from '@mui/material'; // Import MUI components
-import image from '../../images/img1.jpg';
+//import image from '../../images/img1.jpg';
 import ClientFooter from '../ClientFooter/ClientFooter';
 
 const Partner = () => {
@@ -33,18 +33,16 @@ const Partner = () => {
           </p>
         </div>
         <div className="flex flex-col items-center mt-24">
-          {/* Circular Container */}
-          <div className="relative">
+          {/* <div className="relative">
             <img
-              src={image} // Replace with your image path or URL
+              src={image} 
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />
-            {/* Camera Icon */}
             <div className="absolute bottom-0 right-0 bg-[#E42B88] rounded-full p-2 shadow-lg">
               <Camera className="w-6 h-6 text-white" />
             </div>
-          </div>
+          </div> */}
 
           {/* Form Section */}
           <form onSubmit={handleSubmit(onSubmit)} className="mt-12 w-full max-w-2xl">

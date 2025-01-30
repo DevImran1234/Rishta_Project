@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserById } from "../../reduxToolkit/userSlice";
-import loader from '../../images/loader1.svg';
+// import loader from '../../images/loader1.svg';
 
 function UserView() {
   const { id } = useParams();
@@ -23,7 +23,7 @@ function UserView() {
         <div className="p-4">
           {isLoading ? (
             <div className="flex justify-center items-center">
-              <img src={loader} alt="Loading" className="w-16 h-16" />
+              <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738261273/nncc7cvrue6awwfdgma9.svg" alt="Loading" className="w-16 h-16" />
             </div>
           ) : (
             user && (

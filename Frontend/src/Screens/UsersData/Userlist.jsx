@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import loader from '../../images/loader1.svg';
+// import loader from '../../images/loader1.svg';
 
 
 function Userlist() {
@@ -53,7 +53,7 @@ function Userlist() {
         <div className="overflow-x-auto">
           {isLoading ? (
             <div className="flex justify-center items-center p-4">
-              <img src={loader} alt="Loading" />
+              <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738261273/nncc7cvrue6awwfdgma9.svg" alt="Loading" />
             </div>
           ) : (
             <table className="min-w-full divide-y divide-gray-200">

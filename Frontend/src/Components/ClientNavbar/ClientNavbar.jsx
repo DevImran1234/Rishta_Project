@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import logo from '../../images/logo-blk.png';
-import image from '../../images/img1.jpg';
 import { Bell, Menu } from 'lucide-react'; 
 import './ClientNavbar.css';
 import { Link } from 'react-router-dom';

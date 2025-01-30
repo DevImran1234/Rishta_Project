@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./css/ClinetCards.css";
-import chaticon from "../../images/chat.png";
-import star from "../../images/Star.png";
+// import chaticon from "../../images/chat.png";
 import { FiMoreVertical } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "@mui/material";
@@ -109,7 +108,7 @@ const ClinetCards = () => {
                 <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0">
                   {image ? (
                     <img
-                      src={image}
+                      src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260079/sidebar/ct5gx1rrxtln5sbchpzy.png"
                       alt={fullName}
                       className="w-full h-full rounded-full object-cover"
                     />
@@ -169,7 +168,7 @@ const ClinetCards = () => {
                 onClick={handleMessage}
                 className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]"
               >
-                <img src={chaticon} alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat
+                <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png" alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat
               </button>
             </div>
           </div>

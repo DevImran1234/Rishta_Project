@@ -1,7 +1,4 @@
 import React from "react";
-import img from "../../images/img2.jpg";
-import img2 from "../../images/img6.webp";
-import img3 from "../../images/img4.webp";
 import "./Relationship.css";
 
 const Relationship = () => {

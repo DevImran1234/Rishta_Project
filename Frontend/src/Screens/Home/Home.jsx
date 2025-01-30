@@ -1,7 +1,6 @@
 import React from "react";
 // import Navbar from "../Navbar/Navbar";
 import Navbar from "../../Components/Navbar/Navbar"
-import img1 from "../../images/img8.png";
 import "./Home.css";
 // import Cards from "../Cards/Cards";
 import Cards from "../../Components/Cards/Cards"

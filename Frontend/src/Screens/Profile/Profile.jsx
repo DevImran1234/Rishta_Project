@@ -3,7 +3,7 @@ import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
 // import ClientFooter from './../Components/ClientFooter/ClientFooter';
 import { Camera, Plus } from 'lucide-react'; // Import Camera icon from Lucide React
 import { Grid, TextField, Typography } from '@mui/material'; // Import MUI components
-import image from '../../images/img1.jpg';
+// import image from '../../images/img1.jpg';
 import { Link } from 'react-router-dom';
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 const Profile = () => {
@@ -22,7 +22,7 @@ const Profile = () => {
           {/* Circular Container */}
           <div className="relative">
             <img
-              src={image} // Replace with your image path or URL
+              src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png" // Replace with your image path or URL
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
             />

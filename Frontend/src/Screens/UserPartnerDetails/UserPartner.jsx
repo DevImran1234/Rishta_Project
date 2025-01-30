@@ -6,7 +6,7 @@ import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { Camera } from 'lucide-react'; 
 import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material'; 
-import image from '../../images/img1.jpg';
+// import image from '../../images/img1.jpg';
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { User, Menu, X } from 'lucide-react';
-import Locaton from '../../images/userLoc.png';
-import id from '../../images/id.png';
-import family from '../../images/FullFamily.png';
-import Romance from '../../images/Romance.png';
+// import Locaton from '../../images/userLoc.png';
+// import id from '../../images/id.png';
+// import family from '../../images/FullFamily.png';
+// import Romance from '../../images/Romance.png';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +31,10 @@ const Sidebar = () => {
       >
         <div className="flex flex-col items-center justify-center space-y-8 md:space-y-4">
           <User color="white" size={32} className="text-white" />
-          <img src={Locaton} alt="Location" width={48} height={48} className="h-[6vh] w-auto" />
-          <img src={id} alt="ID" width={48} height={48} className="h-[6vh] w-auto" />
-          <img src={family} alt="Family" width={48} height={48} className="h-[6vh] w-auto" />
-          <img src={Romance} alt="Romance" width={48} height={48} className="h-[6vh] w-auto" />
+          <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260080/sidebar/bt3wyaapf9j8tvpyw0hz.png" alt="Location" width={48} height={48} className="h-[6vh] w-auto" />
+          <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260078/sidebar/mzsrjkylffhgzxjenlrb.png" alt="ID" width={48} height={48} className="h-[6vh] w-auto" />
+          <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260078/sidebar/v7pqscyiflxgadyrjrmy.png" alt="Family" width={48} height={48} className="h-[6vh] w-auto" />
+          <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260080/sidebar/itwrigwucwqlwag9reny.png" alt="Romance" width={48} height={48} className="h-[6vh] w-auto" />
         </div>
       </div>
     </>

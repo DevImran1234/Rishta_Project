@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../images/logo-blk.png";
 import "./users.css";
-import group from "../../images/Group.png";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

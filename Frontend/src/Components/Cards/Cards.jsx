@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import './Card.css';
-import img from '../../images/img9.png';
-import img2 from '../../images/img10.png';
-import img3 from '../../images/img11.png';
+
 
 const Cards = () => {
   return (
@@ -12,7 +10,7 @@ const Cards = () => {
         whileHover={{ scale: 1.05 }} 
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        SHADI trademark notice
+        Rishta trademark notice
       </motion.div>
       <div className="card-wrapper">
         <motion.div 
