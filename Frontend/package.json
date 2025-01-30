@@ -31,6 +31,7 @@
       "axios": "^1.2.2",
       "bootstrap": "^5.3.3",
       "chart.js": "^4.4.4",
+      "emoji-picker-react": "^4.12.0",
       "font-awesome": "^4.7.0",
       "formik": "^2.4.6",
       "framer-motion": "^11.3.2",
@@ -49,6 +50,7 @@
       "react-slick": "^0.30.2",
       "react-transition-group": "^4.4.5",
       "slick-carousel": "^1.8.1",
+      "socket.io-client": "^4.8.1",
       "sweetalert2": "^11.14.0",
       "swiper": "^11.1.5",
       "yup": "^1.4.0"

@@ -29,7 +29,7 @@ const Cards = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119589/rishta%20images/gpufnrf8zaayc6yax8db.png"} alt="" className="img" />
-            <p>Millions of people register on Shadi.com looking for someone special. This site is for serious singles looking for long-lasting relationships.</p>
+            <p>Millions of people register on Rishtaappoffical.com looking for someone special. This site is for serious singles looking for long-lasting relationships.</p>
           </motion.div>
           <motion.div 
             className="card"
@@ -47,7 +47,7 @@ const Cards = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <img src={"https://res.cloudinary.com/dh32zavox/image/upload/v1735119590/rishta%20images/tf361wodu0lrz2qstrd5.png"} alt="" className="img" />
-            <p>Shadi.com uses a smart matchmaking system. We present you matches based on current location, education level, and lifestyle choices.</p>
+            <p>Rishtaappoffical.com uses a smart matchmaking system. We present you matches based on current location, education level, and lifestyle choices.</p>
           </motion.div>
         </div>
       </div>

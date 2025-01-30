@@ -14,7 +14,7 @@ const Stories = () => {
             alt="Success Story"
           />
           <p className="text-center text-sm md:text-base">
-            I want to thank Shadi.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
+            I want to thank Rishtaappoffical.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ const Stories = () => {
             alt="Success Story"
           />
           <p className="text-center text-sm md:text-base">
-            I want to thank Shadi.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
+            I want to thank Rishtaappoffical.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ const Stories = () => {
             alt="Success Story"
           />
           <p className="text-center text-sm md:text-base">
-            I want to thank Shadi.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
+            I want to thank Rishtaappoffical.com for making me meet my life partner. I have found a great friend in my life partner. I am excited to start a new phase of my life with him in Canada. This shift from India has only been possible through his continuous support and unconditional care and love.
           </p>
         </div>
       </div>
