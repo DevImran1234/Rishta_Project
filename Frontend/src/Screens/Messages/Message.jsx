@@ -6,6 +6,8 @@ import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import ClientFooter from '../../Components/ClientFooter/ClientFooter';
 
+// const socket = io('http://localhost:8000');
+
 const socket = io('http://localhost:8000', { transports: ['websocket'] });
 
 const Message = () => {
@@ -19,14 +21,50 @@ const Message = () => {
   const username = localStorage.getItem('LoggedInUser');
 
   useEffect(() => {
-    socket.on('newMessage', (msg) => {
+    console.log("Attempting to connect to socket...");
+    
+    if (username) {
+      console.log(`Emitting joinRoom with username: ${username}`);
+      socket.emit("joinRoom", { username, groupId: null });
+    }
+  
+    socket.on("connect", () => {
+      console.log("✅ Socket connected:", socket.id);
+    });
+  
+    socket.on("disconnect", () => {
+      console.log("❌ Socket disconnected");
+    });
+  
+    socket.on("connect_error", (error) => {
+      console.error("⚠️ Socket connection error:", error);
+    });
+  
+    socket.on("connect_failed", () => {
+      console.error("⚠️ Socket connection failed");
+    });
+  
+    socket.on("newMessage", (msg) => {
+      console.log("📩 New message received:", msg);
       setMessages((prev) => [...prev, msg]);
     });
-
+  
     return () => {
-      socket.off('newMessage');
+      console.log("Cleaning up socket listeners...");
+      socket.off("connect");
+      socket.on("connect", () => {
+        console.log("✅ Socket connected:", socket.id);
+        console.log("Socket status:", socket.connected);
+      });
+      
+      socket.off("disconnect");
+      socket.off("connect_error");
+      socket.off("connect_failed");
+      socket.off("newMessage");
     };
   }, []);
+  
+  
 
   const handleEmojiClick = (emoji) => {
     setMessage((prev) => prev + emoji.emoji);
@@ -38,13 +76,13 @@ const Message = () => {
     setFile(selectedFile);
     if (selectedFile) {
       const fileURL = URL.createObjectURL(selectedFile);
-      setFilePreview(fileURL); 
+      setFilePreview(fileURL);
     }
   };
 
   const handleRemoveFile = () => {
     setFile(null);
-    setFilePreview(null); 
+    setFilePreview(null);
   };
 
   const handleLocationShare = () => {
@@ -65,20 +103,21 @@ const Message = () => {
       const newMessage = {
         from: username,
         message,
-        image: file && file.type.startsWith('image') ? URL.createObjectURL(file) : '',
-        location: location || null,
+        image: file && file.type.startsWith('image') ? file : null,
         audio: file && file.type.startsWith('audio') ? file : null,
-        video: file && file.type.startsWith('video') ? URL.createObjectURL(file) : null,
-        file: file && !file.type.startsWith('image') && !file.type.startsWith('audio') && !file.type.startsWith('video') ? file : null, // Handle other files (DOCX)
+        video: file && file.type.startsWith('video') ? file : null,
+        file: file && !file.type.startsWith('image') && !file.type.startsWith('audio') && !file.type.startsWith('video') ? file : null,
+        location: location || null,
       };
-
+  
+      console.log("Emitting sendMessage:", newMessage);
       socket.emit('sendMessage', newMessage);
-
+  
       setMessages((prev) => [...prev, newMessage]);
       setMessage('');
       setFile(null);
       setLocation(null);
-      setFilePreview(null); // Clear file preview after sending the message
+      setFilePreview(null);
     }
   };
 
@@ -99,7 +138,7 @@ const Message = () => {
                 <p className="text-sm sm:text-base">No messages yet</p>
               ) : (
                 messages.map((msg, index) => (
-                  <div key={index} className={`p-2 my-2 rounded-lg ${msg.from === 'currentUser' ? 'bg-blue-100 self-end' : 'bg-gray-200 self-start'}`}>
+                  <div key={index} className={`p-2 my-2 rounded-lg ${msg.from === username ? 'bg-blue-100 self-end' : 'bg-gray-200 self-start'}`}>
                     <strong>{msg.from}:</strong> {msg.message}
                     {msg.image && <img src={msg.image} alt="file" className="max-w-full mt-2" />}
                     {msg.audio && <audio controls className="mt-2"><source src={msg.audio} type="audio/mpeg" /></audio>}

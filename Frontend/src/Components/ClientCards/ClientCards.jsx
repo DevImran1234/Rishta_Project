@@ -161,7 +161,7 @@ const ClinetCards = () => {
             </div>
             <div className="mx-auto flex flex-col md:flex-row justify-between md:justify-between pt-[20px] gap-2 md:gap-0">
               <button className="bg-[#E42B88B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]">
-                <img src={star} alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
+                <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260079/sidebar/ct5gx1rrxtln5sbchpzy.png" alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
               </button>
               <button
                 // onClick={handleSubscribe} // Trigger subscription when clicked
