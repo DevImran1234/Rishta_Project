@@ -1,70 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { io } from 'socket.io-client';
-import EmojiPicker from 'emoji-picker-react';
-import { Paperclip, Smile, Send } from 'lucide-react';
-import ClientNavbar from '../../Components/ClientNavbar/ClientNavbar';
-import Sidebar from '../../Components/Sidebar/Sidebar';
-import ClientFooter from '../../Components/ClientFooter/ClientFooter';
+import React, { useState, useEffect } from "react";
+import { io } from "socket.io-client";
+import EmojiPicker from "emoji-picker-react";
+import { Paperclip, Smile, Send, X } from "lucide-react";
+import ClientNavbar from "../../Components/ClientNavbar/ClientNavbar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import ClientFooter from "../../Components/ClientFooter/ClientFooter";
+import { useLocation } from "react-router-dom";
 
-// const socket = io('http://localhost:8000');
-
-const socket = io('http://localhost:8000', { transports: ['websocket'] });
+const token = localStorage.getItem("usertoken");
+const socket = io("http://localhost:8000", {
+  transports: ["websocket"],
+  auth: {
+    token: token, 
+  },
+});
 
 const Message = () => {
-  const [message, setMessage] = useState('');
+  const location = useLocation();
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [file, setFile] = useState(null);
-  const [location, setLocation] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
+  const [locations, setLocations] = useState(null);
 
-  const username = localStorage.getItem('LoggedInUser');
+  const clientName = location.state?.clientName || "Unknown Client";
+  const username = localStorage.getItem("LoggedInUser");
 
   useEffect(() => {
-    console.log("Attempting to connect to socket...");
-    
-    if (username) {
-      console.log(`Emitting joinRoom with username: ${username}`);
-      socket.emit("joinRoom", { username, groupId: null });
-    }
-  
-    socket.on("connect", () => {
-      console.log("✅ Socket connected:", socket.id);
-    });
-  
-    socket.on("disconnect", () => {
-      console.log("❌ Socket disconnected");
-    });
-  
-    socket.on("connect_error", (error) => {
-      console.error("⚠️ Socket connection error:", error);
-    });
-  
-    socket.on("connect_failed", () => {
-      console.error("⚠️ Socket connection failed");
-    });
-  
-    socket.on("newMessage", (msg) => {
-      console.log("📩 New message received:", msg);
-      setMessages((prev) => [...prev, msg]);
-    });
-  
-    return () => {
-      console.log("Cleaning up socket listeners...");
-      socket.off("connect");
-      socket.on("connect", () => {
-        console.log("✅ Socket connected:", socket.id);
-        console.log("Socket status:", socket.connected);
+    if (username && clientName) {
+      socket.emit("joinRoom", { username, groupId: clientName }, (response) => {
+        if (response.error) {
+          alert("Error joining the room: " + response.error);
+        } else {
+          alert(`You are now connected to the chat with: ${clientName}`);
+        }
       });
-      
-      socket.off("disconnect");
-      socket.off("connect_error");
-      socket.off("connect_failed");
-      socket.off("newMessage");
-    };
-  }, []);
-  
-  
+
+      socket.on("newMessage", (msg) => {
+        setMessages((prev) => [...prev, msg]);
+      });
+
+      socket.on("privateMessageHistory", (previousMessages) => {
+        setMessages(previousMessages);
+      });
+
+      return () => {
+        socket.emit("leaveRoom", { username, groupId: clientName });
+        socket.off("newMessage");
+        socket.off("privateMessageHistory");
+      };
+    }
+  }, [clientName, username]);
 
   const handleEmojiClick = (emoji) => {
     setMessage((prev) => prev + emoji.emoji);
@@ -73,8 +60,8 @@ const Message = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
     if (selectedFile) {
+      setFile(selectedFile);
       const fileURL = URL.createObjectURL(selectedFile);
       setFilePreview(fileURL);
     }
@@ -88,36 +75,36 @@ const Message = () => {
   const handleLocationShare = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setLocation({
+        setLocations({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
       });
     } else {
-      alert('Geolocation is not supported by this browser.');
+      alert("Geolocation is not supported by this browser.");
     }
   };
 
   const handleSendMessage = () => {
-    if (message.trim() || file || location) {
+    if (message.trim() || file || locations) {
       const newMessage = {
         from: username,
         message,
-        image: file && file.type.startsWith('image') ? file : null,
-        audio: file && file.type.startsWith('audio') ? file : null,
-        video: file && file.type.startsWith('video') ? file : null,
-        file: file && !file.type.startsWith('image') && !file.type.startsWith('audio') && !file.type.startsWith('video') ? file : null,
-        location: location || null,
+        image: file && file.type.startsWith("image") ? filePreview : null,
+        video: file && file.type.startsWith("video") ? filePreview : null,
+        file: file && !file.type.startsWith("image") && !file.type.startsWith("video") ? filePreview : null,
+        location: locations || null,
+        to: clientName, // Sending to the specific client
       };
-  
-      console.log("Emitting sendMessage:", newMessage);
-      socket.emit('sendMessage', newMessage);
-  
+
+      socket.emit("sendMessage", newMessage);
       setMessages((prev) => [...prev, newMessage]);
-      setMessage('');
+      setMessage("");
       setFile(null);
-      setLocation(null);
+      setLocations(null);
       setFilePreview(null);
+    } else {
+      alert("Message cannot be empty.");
     }
   };
 
@@ -133,66 +120,71 @@ const Message = () => {
             </div>
 
             {/* Message List */}
-            <div className="pt-[12vh] mt-2 sm:mt-3 md:mt-5 px-4 sm:px-6 md:px-8 text-center w-full overflow-y-auto max-h-[60vh]">
-              {messages.length === 0 ? (
-                <p className="text-sm sm:text-base">No messages yet</p>
-              ) : (
-                messages.map((msg, index) => (
-                  <div key={index} className={`p-2 my-2 rounded-lg ${msg.from === username ? 'bg-blue-100 self-end' : 'bg-gray-200 self-start'}`}>
-                    <strong>{msg.from}:</strong> {msg.message}
-                    {msg.image && <img src={msg.image} alt="file" className="max-w-full mt-2" />}
-                    {msg.audio && <audio controls className="mt-2"><source src={msg.audio} type="audio/mpeg" /></audio>}
-                    {msg.video && <video controls className="mt-2"><source src={msg.video} type="video/mp4" /></video>}
-                    {msg.file && <a href={msg.file} download className="mt-2 text-blue-500">Download File</a>}
-                    {msg.location && (
-                      <div className="mt-2">
-                        <p>Location: {msg.location.lat}, {msg.location.lng}</p>
-                      </div>
-                    )}
-                  </div>
-                ))
-              )}
+            <div className="pt-[12vh] px-4 w-full flex flex-col space-y-3 overflow-y-auto max-h-[500px]">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`p-2 rounded-lg ${
+                    msg.from === username ? "bg-blue-100 self-end" : "bg-gray-200 self-start"
+                  }`}
+                >
+                  <p className="text-sm font-semibold">{msg.from}</p>
+                  {msg.image && <img src={msg.image} alt="Sent" className="w-40 mt-2 rounded-lg" />}
+                  {msg.video && <video src={msg.video} controls className="w-40 mt-2 rounded-lg" />}
+                  {msg.file && (
+                    <a href={msg.file} download className="text-blue-500 underline mt-2 block">
+                      Download File
+                    </a>
+                  )}
+                  <p className="text-md mt-1">{msg.message}</p>
+                  {msg.location && (
+                    <p className="text-sm text-gray-500">
+                      Location: {msg.location.lat}, {msg.location.lng}
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
 
             {/* Message Input */}
-            <div className="absolute bottom-4 left-4 right-4 flex items-center bg-gray-100 p-3 rounded-lg shadow-md">
+            <div className="w-full p-4 flex items-center space-x-2 border-t mt-auto">
+              <button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                <Smile className="text-gray-500 hover:text-gray-700" />
+              </button>
+              {showEmojiPicker && (
+                <div className="absolute bottom-14 left-4">
+                  <EmojiPicker onEmojiClick={handleEmojiClick} />
+                </div>
+              )}
+
               <input
                 type="text"
+                className="flex-grow p-2 border rounded-lg outline-none"
+                placeholder="Type a message..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type a message..."
-                className="flex-grow p-2 rounded-md border border-gray-300 focus:outline-none"
               />
-              <button onClick={() => setShowEmojiPicker(!showEmojiPicker)} className="mx-2 text-gray-500">
-                <Smile size={24} />
-              </button>
-              <button onClick={handleLocationShare} className="mx-2 text-gray-500">
-                📍
-              </button>
-              <label className="cursor-pointer text-gray-500 mx-2">
-                <Paperclip size={24} />
-                <input type="file" className="hidden" onChange={handleFileChange} />
+
+              <input type="file" id="fileUpload" className="hidden" onChange={handleFileChange} />
+              <label htmlFor="fileUpload">
+                <Paperclip className="text-gray-500 hover:text-gray-700 cursor-pointer" />
               </label>
-              <button onClick={handleSendMessage} className="text-blue-500">
-                <Send size={24} />
+
+              {filePreview && (
+                <div className="relative">
+                  <img src={filePreview} alt="Preview" className="w-12 h-12 rounded-md" />
+                  <button onClick={handleRemoveFile} className="absolute top-0 right-0 text-red-500">
+                    <X />
+                  </button>
+                </div>
+              )}
+
+              <button onClick={handleLocationShare} className="text-blue-500 text-sm">📍</button>
+
+              <button onClick={handleSendMessage} className="bg-blue-500 text-white p-2 rounded-lg">
+                <Send />
               </button>
             </div>
-
-            {filePreview && (
-              <div className="absolute bottom-16 left-4 right-4 bg-white shadow-lg p-4 rounded-lg">
-                <h3 className="text-lg font-medium">File Preview</h3>
-                {file && file.type.startsWith('image') && <img src={filePreview} alt="preview" className="max-w-full mt-2" />}
-                {file && file.type.startsWith('video') && <video controls src={filePreview} className="max-w-full mt-2" />}
-                {file && file.type.startsWith('audio') && <audio controls src={filePreview} className="mt-2" />}
-                <button onClick={handleRemoveFile} className="mt-2 text-red-500">Remove</button>
-              </div>
-            )}
-
-            {showEmojiPicker && (
-              <div className="absolute bottom-16 right-4 bg-white shadow-lg rounded-lg">
-                <EmojiPicker onEmojiClick={handleEmojiClick} />
-              </div>
-            )}
           </div>
         </main>
       </div>

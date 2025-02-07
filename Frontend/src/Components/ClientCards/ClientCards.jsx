@@ -13,7 +13,7 @@ const ClinetCards = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
   const [activeProfileId, setActiveProfileId] = useState(null);
-  const [isPopupOpen, setIsPopupOpen] = useState(false); 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/profile")
@@ -39,7 +39,7 @@ const ClinetCards = () => {
     handleMenuClose();
   };
 
-  const closePopup = () => setIsPopupOpen(false); 
+  const closePopup = () => setIsPopupOpen(false);
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -51,9 +51,9 @@ const ClinetCards = () => {
     handleMenuClose();
   };
 
-  const handleMessage = () => {
-    navigate(`/Messages`)
-  }
+  const handleMessage = (clientName, activeProfileId) => {
+    navigate(`/Messages`, { state: { clientName, activeProfileId } });
+  };
 
   const handleDelete = async () => {
     try {
@@ -79,11 +79,11 @@ const ClinetCards = () => {
   };
 
   const handleSubscribe = () => {
-    setIsPopupOpen(true); 
+    setIsPopupOpen(true);
   };
 
   if (isLoading) {
-    return <div><LoadingSpinner/></div>;
+    return <div><LoadingSpinner /></div>;
   }
 
   if (profiles.length === 0) {
@@ -164,12 +164,12 @@ const ClinetCards = () => {
                 <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260079/sidebar/ct5gx1rrxtln5sbchpzy.png" alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
               </button>
               <button
-                // onClick={handleSubscribe} // Trigger subscription when clicked
-                onClick={handleMessage}
+                onClick={() => handleMessage(fullName, profile._id)}  // Pass both name and id
                 className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]"
               >
                 <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png" alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat
               </button>
+
             </div>
           </div>
         );
