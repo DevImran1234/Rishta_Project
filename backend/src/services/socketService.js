@@ -67,48 +67,34 @@ function setupSocket(httpServer) {
     });
 
     socket.on("sendMessage", async (data) => {
-      let chatMessage;
-      const { to, group, message, image, audio, video, file, location } = data;
-      let from = data.from;
+      let { to, message, image, audio, video, file, location } = data;
+      let from = data.from || socket.user._id;
 
-      if (!to && !group) {
-        return socket.emit("error", { message: "Receiver/group required" });
+      if (!to) {
+        return socket.emit("error", { message: "Recipient is required" });
       }
 
-      if (!from) {
-        from = socket.user._id;
-      } else {
-        const user = await User.findOne({ username: from });
-        if (!user) {
-          return socket.emit("error", { message: "Sender user not found" });
-        }
-        from = user._id; // Use ObjectId for the chat message
+      const recipient = await User.findOne({ username: to });
+      if (!recipient) {
+        return socket.emit("error", { message: "Recipient user not found" });
       }
 
-      let recipient = null;
-      if (to) {
-        recipient = await User.findOne({ username: to });
-        if (!recipient) {
-          return socket.emit("error", { message: "Recipient user not found" });
-        }
-      }
+      // **Check for Blocked Users**
+      const isBlocked = await Report.findOne({
+        $or: [
+          { userId: from, personId: recipient._id, block: true },
+          { userId: recipient._id, personId: from, block: true },
+        ],
+      });
 
-      if (to) {
-        const isBlocked = await Report.findOne({
-          $or: [
-            { userId: from, personId: recipient._id, block: true },
-            { userId: recipient._id, personId: from, block: true },
-          ],
+      if (isBlocked) {
+        return socket.emit("error", {
+          message:
+            "You cannot send messages to this user because one of you has been blocked.",
         });
-
-        if (isBlocked) {
-          return socket.emit("error", {
-            message:
-              "You cannot send messages to this user because one of you has been blocked.",
-          });
-        }
       }
 
+      // **Determine Message Type**
       let messageType = "text";
       let locationData = { lat: "", lng: "" };
 
@@ -116,66 +102,120 @@ function setupSocket(httpServer) {
       if (audio) messageType = "audio";
       if (video) messageType = "video";
       if (file) messageType = "file";
-      if (message) messageType = "text";
       if (location) {
         messageType = "location";
         locationData = { lat: location.lat, lng: location.lng };
       }
 
-      if (group) {
-        chatMessage = {
-          from,
-          group,
-          message,
-          image: image || "",
-          audio: audio || "",
-          video: video || "",
-          file: file || "",
-          type: messageType,
-          location: locationData,
-          createdAt: new Date(),
-        };
+      const room = [socket.user.username, to].sort().join("-");
+      const chatMessage = {
+        from,
+        to: recipient._id,
+        message,
+        image: image || "",
+        audio: audio || "",
+        video: video || "",
+        file: file || "",
+        type: messageType,
+        location: locationData,
+        createdAt: new Date(),
+      };
 
-        try {
-          const savedMessage = await Chat.create(chatMessage);
-          console.log(savedMessage);
+      try {
+        const savedMessage = await Chat.create(chatMessage);
+        console.log(savedMessage);
 
-          // Publish the message to the group's Redis channel
-          redisClient.publish(group, JSON.stringify(savedMessage));
-        } catch (error) {
-          console.error("Error saving chat message:", error);
-        }
-      } else {
-        const room = [socket.user.username, to].sort().join("-");
-        chatMessage = {
-          from,
-          to: recipient._id,
-          message,
-          image: image || "",
-          audio: audio || "",
-          video: video || "",
-          file: file || "",
-          type: messageType,
-          location: locationData,
-          createdAt: new Date(),
-        };
-
-        try {
-          const savedMessage = await Chat.create(chatMessage);
-          console.log(savedMessage);
-
-          // Publish the message to the corresponding room in Redis
-          redisClient.publish(room, JSON.stringify(savedMessage));
-        } catch (error) {
-          console.error("Error saving chat message:", error);
-        }
+        // **Publish Message to Redis Channel**
+        redisClient.publish(room, JSON.stringify(savedMessage));
+      } catch (error) {
+        console.error("Error saving chat message:", error);
       }
     });
 
+  
+    socket.on("getMessages", async ({ withUser }) => {
+      if (!withUser) {
+        return socket.emit("error", { message: "User to chat with is required" });
+      }
+
+      const recipient = await User.findOne({ username: withUser });
+      if (!recipient) {
+        return socket.emit("error", { message: "Recipient user not found" });
+      }
+
+      const messages = await Chat.find({
+        $or: [
+          { from: socket.user._id, to: recipient._id },
+          { from: recipient._id, to: socket.user._id },
+        ],
+      }).sort({ createdAt: 1 });
+
+      socket.emit("chatHistory", messages);
+    });
+
+    // **Listen for New Messages**
     redisSubscriber.on("message", (room, message) => {
       io.to(room).emit("newMessage", JSON.parse(message));
     });
-  })
+  });
+
+  socket.on("getChats", async () => {
+    try {
+      const userId = socket.user._id;
+  
+      // Find unique users this user has messaged or received messages from
+      const chats = await Chat.aggregate([
+        {
+          $match: {
+            $or: [{ from: mongoose.Types.ObjectId(userId) }, { to: mongoose.Types.ObjectId(userId) }],
+          },
+        },
+        {
+          $sort: { createdAt: -1 }, // Sort messages by latest first
+        },
+        {
+          $group: {
+            _id: {
+              otherUser: {
+                $cond: {
+                  if: { $eq: ["$from", mongoose.Types.ObjectId(userId)] },
+                  then: "$to",
+                  else: "$from",
+                },
+              },
+            },
+            latestMessage: { $first: "$message" }, // Get the latest message
+            latestMessageTime: { $first: "$createdAt" }, // Get the latest message timestamp
+          },
+        },
+        {
+          $lookup: {
+            from: "users", 
+            localField: "_id.otherUser",
+            foreignField: "_id",
+            as: "userDetails",
+          },
+        },
+        {
+          $unwind: "$userDetails",
+        },
+        {
+          $project: {
+            _id: "$userDetails._id",
+            username: "$userDetails.username",
+            latestMessage: 1,
+            latestMessageTime: 1,
+          },
+        },
+        { $sort: { latestMessageTime: -1 } },
+      ]);
+  
+      socket.emit("chatList", chats);
+    } catch (error) {
+      console.error("Error fetching chat list:", error);
+      socket.emit("error", { message: "Error fetching chat list" });
+    }
+  });
 }
 
 export default setupSocket;
