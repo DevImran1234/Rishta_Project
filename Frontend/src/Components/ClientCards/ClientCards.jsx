@@ -51,9 +51,48 @@ const ClinetCards = () => {
     handleMenuClose();
   };
 
-  const handleMessage = (clientName, activeProfileId) => {
-    navigate(`/Messages`, { state: { clientName, activeProfileId } });
+  const handleMessage = () => {
+    fetch("http://localhost:8000/api/profile")
+      .then(response => response.json())
+      .then(data => {
+        const emails = extractEmails(data);
+        if (emails.length === 0) {
+          alert("No registered user found to initiate chat.");
+          return;
+        }
+  
+        const creatorEmail = emails[0];
+        const userId = data[0]?._id;
+  
+        console.log("UserId:", userId);
+        console.log("Email:", creatorEmail);
+  
+        navigate(`/Messages/${userId}`, { state: { clientEmail: creatorEmail } });
+      })
+      .catch(error => console.error("Error fetching profiles:", error));
   };
+  
+
+
+
+const extractEmails = (profiles) => {
+  return profiles
+    .filter(profile => profile.userId && profile.userId.email) 
+    .map(profile => profile.userId.email);
+};
+
+fetch("http://localhost:8000/api/profile")
+  .then(response => response.json())
+  .then(data => {
+    const emails = extractEmails(data);
+    console.log("Extracted Emails:", emails);
+  })
+  .catch(error => console.error("Error fetching profiles:", error));
+
+  // alert(extractEmails)
+
+  
+  
 
   const handleDelete = async () => {
     try {
@@ -164,11 +203,12 @@ const ClinetCards = () => {
                 <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260079/sidebar/ct5gx1rrxtln5sbchpzy.png" alt="Star Icon" className="w-[16px] h-[16px]" /> Favourite
               </button>
               <button
-                onClick={() => handleMessage(fullName, profile._id)}  // Pass both name and id
-                className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]"
-              >
-                <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png" alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat
-              </button>
+  onClick={() => handleMessage(profile)} 
+  className="bg-[#2F82A0B2] flex justify-center items-center gap-[5px] text-white py-2 px-4 rounded-[12px] text-[14px]"
+>
+  <img src="https://res.cloudinary.com/dh32zavox/image/upload/v1738260076/sidebar/uokjxw03pinhxibom2jc.png" alt="Chat Icon" className="w-[16px] h-[16px]" /> Chat
+</button>
+
 
             </div>
           </div>

@@ -77,7 +77,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/marriage" element={<MarriageForm />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/Messages" element={<ProtectedRoute><Message /></ProtectedRoute>} />
+        <Route path="/Messages/:clientName" element={<ProtectedRoute><Message /></ProtectedRoute>} />
         <Route path="/clients" element={<ProtectedRoute><Client /></ProtectedRoute>} />
         <Route path="/client-profile" element={<ProtectedRoute><ClientProfile /></ProtectedRoute>} />
         <Route path="/Client-profession" element={<ProtectedRoute><Clientprofession /></ProtectedRoute>} />

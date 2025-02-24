@@ -42,6 +42,7 @@ const Login = () => {
   
       localStorage.setItem('usertoken', result.token);
       localStorage.setItem('LoggedInUser' , result.user.name)
+      localStorage.setItem('LoggedInUserEmail' , result.user.email)
         if (result.role === 'user') {
         navigate('/UserCreate-profile');
       } else {
