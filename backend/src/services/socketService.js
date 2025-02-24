@@ -4,14 +4,12 @@ import User from "../models/userModel.js";
 import Chat from "../models/chatModel.js";
 import mongoose from "mongoose";
 
-
-
 const redisClient = new Redis({
   host: process.env.REDIS_HOST,
   port: parseInt(process.env.REDIS_PORT),
   password: process.env.REDIS_PASSWORD,
-  
 });
+
 function setupSocket(httpServer) {
   const io = new Server(httpServer, {
     cors: {
@@ -26,9 +24,11 @@ function setupSocket(httpServer) {
   const authMiddleware = async (socket, next) => {
     const { token } = socket.handshake.query;
     const user = await User.findOne({ token });
+
     if (!user) {
       return next(new Error("Authentication error"));
     }
+
     socket.user = user;
     next();
   };
@@ -36,7 +36,7 @@ function setupSocket(httpServer) {
   io.use(authMiddleware);
 
   io.on("connection", async (socket) => {
-    console.log(`${socket.user.username} connected`);
+    console.log(`${socket.user.email} connected`);
     const userId = socket.user._id;
 
     await User.updateOne(
@@ -47,29 +47,40 @@ function setupSocket(httpServer) {
     io.emit("userOnline", { userId });
     const redisSubscriber = redisClient.duplicate();
 
-    socket.on("joinRoom", async ({ username }) => {
-      const room = [socket.user.username, username].sort().join("-");
+    // ✅ **Join Room Based on Emails**
+    socket.on("joinRoom", async ({ email }) => {
+      const room = [socket.user.email, email].sort().join("-");
       socket.join(room);
       redisSubscriber.subscribe(room);
-      console.log(`${socket.user.username} joined room ${room}`);
+      console.log(`${socket.user.email} joined room ${room}`);
     });
 
+    // ✅ **Send Message**
     socket.on("sendMessage", async (data) => {
-      let { to, message, image, audio, video, file, location } = data;
-      let from = data.from || socket.user._id;
-
+      let { from, to, message, image, audio, video, file, location } = data;
+    
+      // Ensure "from" is valid (either from the payload or authenticated user)
+      from = from || socket.user.email;
+    
       if (!to) {
-        return socket.emit("error", { message: "Recipient is required" });
+        return socket.emit("error", { message: "Recipient email is required" });
       }
-
-      const recipient = await User.findOne({ username: to });
+    
+      // Fetch sender and recipient from the database
+      const sender = await User.findOne({ email: from });
+      const recipient = await User.findOne({ email: to });
+    
+      if (!sender) {
+        return socket.emit("error", { message: "Sender user not found" });
+      }
+    
       if (!recipient) {
         return socket.emit("error", { message: "Recipient user not found" });
       }
-
+    
       let messageType = "text";
       let locationData = { lat: "", lng: "" };
-
+    
       if (image) messageType = "image";
       if (audio) messageType = "audio";
       if (video) messageType = "video";
@@ -78,11 +89,13 @@ function setupSocket(httpServer) {
         messageType = "location";
         locationData = { lat: location.lat, lng: location.lng };
       }
-
-      const room = [socket.user.username, to].sort().join("-");
+    
+      // Generate room based on emails
+      const room = [sender.email, recipient.email].sort().join("-");
+      
       const chatMessage = {
-        from,
-        to: recipient._id,
+        from: sender._id, // Use sender's ID
+        to: recipient._id, // Use recipient's ID
         message,
         image: image || "",
         audio: audio || "",
@@ -92,33 +105,50 @@ function setupSocket(httpServer) {
         location: locationData,
         createdAt: new Date(),
       };
-
+    
       try {
         const savedMessage = await Chat.create(chatMessage);
-        console.log(savedMessage);
+        console.log("Message saved:", savedMessage);
+    
+        // Publish message to Redis for real-time updates
         redisClient.publish(room, JSON.stringify(savedMessage));
+    
+        // Emit message to the room
+        io.to(room).emit("newMessage", savedMessage);
       } catch (error) {
         console.error("Error saving chat message:", error);
       }
     });
+    
 
-    socket.on("getMessages", async ({ withUser }) => {
-      if (!withUser) {
-        return socket.emit("error", { message: "User to chat with is required" });
+    // **Get Messages Using Emails**
+    socket.on("getMessages", async ({ fromEmail, withEmail }) => {
+      if (!fromEmail || !withEmail) {
+        return socket.emit("error", { message: "Both sender and recipient emails are required" });
       }
 
-      const recipient = await User.findOne({ username: withUser });
-      if (!recipient) {
-        return socket.emit("error", { message: "Recipient user not found" });
-      }
+      // Fetch sender and recipient users based on their emails
+      const sender = await User.findOne({ email: fromEmail });
+      const recipient = await User.findOne({ email: withEmail });
 
+      // if (!sender) {
+      //   return socket.emit("error", { message: "Sender user not found" });
+      // }
+
+      // if (!recipient) {
+      //   return socket.emit("error", { message: "Recipient user not found" });
+      // }
+
+      // Fetch messages between sender and recipient
       const messages = await Chat.find({
         $or: [
-          { from: socket.user._id, to: recipient._id },
-          { from: recipient._id, to: socket.user._id },
+          { from: sender._id, to: recipient._id },
+          { from: recipient._id, to: sender._id },
         ],
       }).sort({ createdAt: 1 });
+console.log(messages,'here is uor');
 
+      // Emit chat history
       socket.emit("chatHistory", messages);
     });
 
@@ -164,7 +194,7 @@ function setupSocket(httpServer) {
           {
             $project: {
               _id: "$userDetails._id",
-              username: "$userDetails.username",
+              email: "$userDetails.email",
               latestMessage: 1,
               latestMessageTime: 1,
             },
@@ -184,7 +214,7 @@ function setupSocket(httpServer) {
     });
 
     socket.on("disconnect", async () => {
-      console.log(`${socket.user.username} disconnected`);
+      console.log(`${socket.user.email} disconnected`);
       await User.updateOne(
         { _id: socket.user._id },
         { $set: { isOnline: false, lastSeen: new Date() } }
